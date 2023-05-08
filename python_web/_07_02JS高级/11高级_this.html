@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * 1.this是什么
+    * 所有函数内部都有一个变量this，
+    * this的值是 调用函数的当前的对象，
+    *
+    * 2.如何确定this的值
+    * 任何函数本质上都是 通过 某个对象来调用的，如果没有指定对象，那就是window
+    * alert()   this 是window
+    * p.test()  this 是p
+    * var p = new test() this 是 新创建的对象
+    * p.test.call(p)  this 是 p ，前提p是对象
+    **/
+
+    function f() {
+        alert('hello world')
+        this['name'] = '孙悟空'
+    }
+    /*var p = new f()*/ //this 是p
+
+    //先声明一个变量
+    var p = new Object()  // {}
+    window.f.call(p)
+    //call 可以让一个函数 零时 成为 任意对象 的方法 进行调用(js特有)
+
+</script>
+</body>
+</html>

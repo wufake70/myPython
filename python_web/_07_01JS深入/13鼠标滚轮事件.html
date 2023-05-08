@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滚轮事件</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        p{
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<p></p>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * 当鼠标滚轮向下滚动，div变长
+    * 当滚轮向上滚动，div变短*/
+
+    var div = $('div')
+
+    /*div.wheel(function () {
+        alert(999)
+    })*/  // 此方法绑定无效
+
+    //以下两种方法绑定 均有效
+    div.bind('wheel', function () {
+        alert(999)
+    })
+    div.on('wheel', function () {
+        alert(999)
+    })
+
+</script>
+</body>
+</html>

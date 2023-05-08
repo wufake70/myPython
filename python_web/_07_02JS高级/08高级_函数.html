@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script>
+  /*1.什么是函数？
+  * 实现 特定功能 的代码块
+  * 只有函数 是可以执行的
+  *
+  * 2.为什么要用函数？
+  * 提高代码复用，提高代码可读性
+  *
+  * 3.如何定函数
+  * ① 函数声明(提前)，function fun1() {}  // 给window对象 创建的方法
+  * ② 函数数表达式，var fnu2 = function () {}
+  *
+  *4.如何执行函数
+  * ① 加括号 直接调用
+  * ② obj.test() 通过对象调用
+  * ③ new test() new调用
+  * ④ call 可以让一个函数成为 任意对象 的方法 进行调用(js特有)，test.call(obj)
+  *
+  *
+  *
+  * */
+
+  function fun1() {
+      alert('9999')
+      this['newattr'] = 'hello world'
+
+  }
+  /*new fun1()*/
+  var obj = {}
+  //
+  fun1.call(obj)  //可以让一个函数 零时 成为 任意对象 的方法 进行调用
+  alert(obj.newattr)
+
+</script>
+</body>
+</html>

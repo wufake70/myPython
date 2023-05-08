@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        /*设置主体盒子*/
+        .d1{
+            width: 400px;
+            height: 200px;
+            border: 2px solid black;
+            position: relative;
+            top: 100px;
+            left: 575px;
+
+            text-align: center;  /*设置盒子的文本内容居中*/
+        }
+
+        /*设置盒子内的字体的样式*/
+        .d1>span{
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 70px;
+            color: black;
+        }
+
+        /*设置特殊字段样式*/
+        .s1{
+            font-size: 23px;
+            color: red;
+        }
+
+        .time{
+            color: grey;
+            font-size: 10px;
+        }
+
+        .str1{
+            font-weight: bolder;
+            color: red;
+            font-size: 40px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="d1">
+    <span class="">
+        距离上课还有
+        <span class="s1">
+            10
+        </span>
+        秒!
+    </span> <br>
+    <span class="">
+        北京时间:
+        <span class="date">
+
+        </span>
+        <span class="time">
+
+        </span>
+    </span>
+</div>
+
+
+<script>
+    let second = document.querySelector('.s1'), //获取倒计时元素
+        date = document.querySelector('.date'),
+        time = document.querySelector('.time'),
+        div = document.querySelector('.d1')
+
+
+    //设置 循环定时器
+    let timer1 = setInterval(function () {
+
+        //获取实时日期
+        let date1 = new Date()
+        date.textContent = date1.getFullYear() + '年' + date1.getMonth() + '月' + date1.getDay() + '日'
+
+        //获取 时分秒
+        time.textContent = date1.getHours() + ':' + date1.getMinutes()+ ':' + date1.getSeconds()
+
+
+        second.textContent -= 1
+        if (second.textContent == 0) {
+            /*return  这里的return 没有意义，必须使用clearTimeout()*/
+            clearTimeout(timer1)   // 清除定时器后代码任可以执行
+            div.textContent = '你已迟到!'
+            div.className = 'str1 d1'
+
+
+
+        }
+    },1000)
+
+
+
+</script>
+</body>
+</html>

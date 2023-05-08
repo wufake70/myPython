@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取内联框架内元素</title>
+</head>
+<body>
+<p title="99999"></p>
+<p title="99999"></p>
+<p title="99999"></p>
+<p title="99999"></p>
+<p title="99999"></p>
+<p title="99999"></p>
+<script src="jQuery/jQuery.js"></script>
+<script>
+    /*iframe 如果文档包含框架（<frame> 或 <iframe> 标签），
+    浏览器会为 HTML 文档创建一个 window 对象，
+    并为每个框架创建一个额外的 window 对象。*/
+
+    /*如何获取内联框架 内的元素？
+    * 1.首先使用选择器，获取当前页面的 iframe 标签  如:document.querySelector('#iframe')
+    *
+    * 2.使用contentWindow方法  如: document.querySelector('#iframe').contentWindow
+    *
+    * 3.此时 使用document方法，在使用选择器
+    * 如: document.querySelector('#iframe').contentWindow.document.querySelector()
+    * 
+    * 
+    * 需要注意的问题
+    *       iframe标签的 src地址 不与当前网页在同一个地址(即不同域),会受到同源策略的限制，上述操作无效
+    * */
+    /*alert($('p').attr('title'))*/
+    $('p').forEach(function () {
+        alert($(this))
+    })
+</script>
+
+
+</body>
+</html>

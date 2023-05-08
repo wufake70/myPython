@@ -1,0 +1,4 @@
+{
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "python.analysis.typeCheckingMode": "basic"
+}

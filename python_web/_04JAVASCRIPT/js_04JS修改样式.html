@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改样式</title>
+    <style>
+        .d1{
+            width: 300px;
+            height: 300px;
+            color: red;
+            background-color: cyan;
+
+        }
+    </style>
+</head>
+<body>
+<div class="d1">
+
+</div>
+<script>
+    // 通过js修改的是 内联样式有较高的优先级，比内部样式的优先级要高，除了内部样式加上 !important（最高优先级）
+    var a = document.getElementsByClassName('d1')[0]
+    a.onmouseenter = function () {
+        a.style.width = '100px';
+        a.style.height = '100px';
+        a.style.color = 'white';
+        a.style.background = 'black';
+    }
+    a.onmouseleave = function () {
+        // 添加都是行内样式
+        a.style['width'] = '300px';  /*可以使用变量的形式*/
+        a.style.height = '300px';
+        a.style.color = 'red';
+        a.style.background = 'cyan';
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>父级模板</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static "admin/css/app_mi_shop/RESET_CSS/reset.css" %}">
+    {% block style %}
+
+    {% endblock %}
+</head>
+<body>
+{#头部#}
+{% block header %}
+    <div class="header">
+    <ul>
+        <a href="">首页</a>
+        <a href="">搜答案</a>
+        <a href="">上传答案</a>
+        <a href="">上传文件答案</a>
+        <a href="">搜题</a>
+        <a href="">搜全套答案</a>
+    </ul>
+    <ul>
+        <span class="user">用户</span>
+        <a class="user-operate">登录</a>
+    </ul>
+
+    </div>
+{% endblock %}
+
+{#身体#}
+{% block content %}
+    <div class="content-box1"> 这是身体</div>
+{% endblock %}
+
+{#底部#}
+{% block footer %}
+
+{% endblock %}
+
+
+
+{#js代码#}
+{% block script %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水平居中和垂直居中</title>
+    <style>
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+            text-align: center;
+        }
+
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+
+            /*是外层盒子水平(左右)局中*/
+            /*margin: 0px auto; */
+
+            /*全居中 方式二*/
+            /*开启绝对定位，left、right、top、bottom 设置为0
+                然后margin 设置为 auto 即可水平，垂直都居中*/
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;  /*开启 绝对定位后 margin: auto;是没有意义的，必须设置left、right、top、bottom相关的值*/
+        }
+        #box2{
+            /*使文本在盒子内水平居中的 方式一*/
+            /*text-align: center; */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+
+             /* 水平居中方法二，注意使用margin时，一定要设置宽高，才能起效*/
+            /*margin: 0px auto*/;
+
+             /*在盒子内 垂直(纵向)居中(方法一)，行高必须等与该盒子的height */
+            /*注意: 此方法 只对 文字和行内有用*/
+            /*line-height: 200px;*/
+
+
+
+        }
+    </style>
+</head>
+<body>
+<div id="box1" >
+    <div id="box2" class="clearfix">我是div盒子</div>
+</div>
+</body>
+</html>

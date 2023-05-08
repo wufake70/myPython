@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>其他选择器</title>
+    <style>
+        /*群组选择器 对于不同的标签
+        且没有相同的class属性，
+        可以用 逗号 隔开，实现全部选择*/
+        /*h2, .p1, .span1{
+            color:blueviolet;
+        }*/
+
+        /*全选择器 使用通配符*  */
+        /**{
+            color: yellow;
+        }*/
+
+        /*层次选择器 */
+            /*后代选择器 包括子代，用空格表示*/
+            /*div p{
+                color: blue;
+            } div内的所有元素 均变色包括span标签
+            span 标签变色 是因为继承了 p标签*/
+
+            /*子代选择器 用大于号表示，同样孙代也会继承子代颜色*/
+            /*div>p{
+                color: brown;
+            }*/
+
+            /*兄弟选择器 用~表示*/
+            /*div>p~span{  !*表示div的子代p标签的兄弟标签*!
+                color: red;
+            }*/
+            /*.p1~p{  !*表示p1类的兄弟p标签，注意:代码自上而下执行，不会倒回去*!
+                color: red;
+            }*/
+
+            /*相邻(兄弟)选择器 用+表示*/
+            /*.p1~p{      !*表示p1类的相邻(只能在上面一个或下面一个)p标签，
+                        注意:代码自上而下执行，不会倒回去*!
+                color: red;
+            }*/
+
+        /*属性选择器 一般是name属性 用中括号[]表示，
+            前面可以写标签名，来指定标签名
+             可以不写属性值*/
+        /*p[name='p4']{
+            color: red;
+        }*/
+
+
+
+
+    </style>
+</head>
+<body>
+<h2>我是二级标题</h2>
+<span class="span1">我是文本标签1</span>
+<p class="p">我是段落1</p>
+<p class="p1">我是段落2</p>
+
+<div>
+    <p class="p1">我是段落3
+    <span>
+        我是文本标签2
+        <span>
+            我是文本标签4
+        </span>
+    </span>
+    </p>
+    <p name="p4">我是段落4</p>
+    <p>我是段落5</p>
+    <span class="span3">我是文本标签3</span>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象</title>
+    <link rel="stylesheet" href="./css/reset.css">
+
+</head>
+<body>
+<script>
+    //数学方法
+    //alert(Math.sqrt(9))           // 开平方
+    //alert(Math.PI)                //π
+    //alert(Math.pow(2, 3))       //幂运算
+    //alert(Math.abs(-19))            //绝对值
+    //alert(Math.random())                //随机小数0~1
+    //alert(Math.max(9,0,1,2.5,7))           //最大值
+    //alert(Math.ceil(9.000001))                   //天花板函数，凡不是整数向上取整
+    //alert(Math.floor(9.0000001))                    //舍去小数
+    //alert(Math.round(0.4))                      //四舍五入，不保留小数
+    var a = 999
+    //alert(a.toString())                        //转字符串
+    var b = [1,2,3,4,5]
+    //alert(b.toString())
+    var c = '999'
+    //alert(typeof Number(c))                 // 转数字
+
+    //返回 min~max 的数
+    var min = 4,
+        max = 7
+    //不包括 max
+    console.log(Math.floor(Math.random()*(max - min))+min)
+    //包括 max，但不包括min
+    console.log(Math.floor(Math.random()*(max - min)+1)+min)
+
+
+    //日期对象
+    //获取日期对象
+    var today = new Date()           //获取本机时间
+    //alert(today)                 //Fri Aug 19 2022 07:25:48 GMT+0800 (中国标准时间)
+    //获取 年份
+    //alert(today.getFullYear())
+    //获取 月份  （国外的月份从零开始，加一即可
+    //alert(today.getMonth()+1)
+    //获取 星期几
+    //alert(today.getDay())
+    //获取 小时
+    //alert(today.getHours())
+    //获取 号数
+    //alert(today.getDate())
+
+    //时间戳 获取到毫秒级别
+    /*var timestamp = Date.now()
+    alert(timestamp)*/
+
+
+
+
+</script>
+</body>
+</html>

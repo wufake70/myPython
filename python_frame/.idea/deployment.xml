@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="project01" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="bd@192.168.194.234:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/bd/django_project01" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="project01">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/bd/django_project01" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

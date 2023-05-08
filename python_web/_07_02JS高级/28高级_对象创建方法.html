@@ -1,0 +1,79 @@
+<html>
+
+<body>
+    <script>
+        //1.使用 Object 构造函数
+
+        var s1 = new Object();
+        s1.name = "波多野结衣"
+        s1.age = 999
+
+
+        //2.使用对象字面量
+        var s2 = {
+            name: "wufake",
+            age: 22
+        }
+
+
+        //3.使用工厂模式
+
+        function stu(name, age) {
+            return {
+                name: name,
+                age: age
+            }
+        }
+
+        s3 = stu("Tom", 35)
+
+        //4.自定义构造函数方法
+
+        function Students(name, age) {
+            this.name = name
+            this.age = age
+            this.do = function() {  // 缺点: 耗费太多 内存空间; 注意: 不宜使用 箭头函数
+                console.log("我是%s", name);
+            }
+        }
+
+        s4 = new Students("lisa", 88)
+        s5 = new Students("maniupi", 99)
+        console.log(s4, s5)
+
+        //5.自定义构造函数 + 原型
+        function Students2(name, age) {
+            // 初始化数据
+            this.name = name
+            this.age = age
+        }
+
+        // 将相同的属性和 方法 设置到 原型对象里，可减小内存空间的占用
+        Students2.prototype.do = function() {   // 注意: 不宜使用 箭头函数
+            console.log("我是%s", this.name)
+        }
+
+        s6 = new Students2("666", 666)
+        s7 = new Students2("888", 888)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

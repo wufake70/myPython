@@ -1,0 +1,44 @@
+# _*_coding :utf-8 _*_
+# @Time :2022/5/14 20:06
+# @File : 百度句子翻译
+# @Project : python-base
+
+import urllib.request
+import urllib.parse
+
+
+query = input('请输入您想要的翻译的句子：')
+url = 'https://fanyi.baidu.com/langdetect'
+
+headers = {
+'Accept': '*/*',
+'Accept-Language': 'zh-CN,zh;q=0.9',
+'Connection': 'keep-alive',
+'Content-Length': '33',
+'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+'Cookie': '__yjs_duid=1_2422155ec3376ed49006cc141c69e0a01645605020450; BAIDUID=31A5761E3E87B3E18CC1131B24410AB5:FG=1; BIDUPSID=31A5761E3E87B3E18CC1131B24410AB5; PSTM=1649747485; H_WISE_SIDS=110085_127969_179350_184716_188332_189755_191254_194085_195622_197241_197471_197711_198260_199155_199580_201193_201536_202652_203190_203310_203316_203504_204123_204261_204701_204711_204864_204902_205218_205240_205484_205569_205807_205909_206006_206196_206729_206734_206929_207236_207471_207729_207830_207864_208113_208268_208343_208522_208687_208721_209282_209395_209488_209512_209521_209568_209575_209931_209944_209981_210163_210357_210653_210670_210737_210842_210890_210892_210894_210900_210906_211113_211181_211242_211302_211442_211457_8000059_8000100_8000118_8000131_8000136_8000165_8000173_8000178_8000179_8000186; REALTIME_TRANS_SWITCH=1; SOUND_SPD_SWITCH=1; HISTORY_SWITCH=1; FANYI_WORD_SWITCH=1; SOUND_PREFER_SWITCH=1; BDUSS_BFESS=EdWMkprREJYMHlQOGFZN20xRmhsd3B4N2R3LU4xTk5LOGpkMzg3REw5b2lyNlZpSUFBQUFBJCQAAAAAAQAAAAEAAAAi0eFCeXVra29vb2tnZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIifmIiIn5iR; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BA_HECTOR=2ha50ka0a4a0a40l9r1h7ucpq0r; BAIDUID_BFESS=2ABC9363F5F2FD6F9F58DBA367186A65:FG=1; Hm_lvt_64ecd82404c51e03dc91cb9e8c025574=1652267891,1652530043; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1652532102; ab_sr=1.0.1_ZWY4NTFjMDBhYjM4NmE2NzQwZmI2ODgzMDhkZWZlMTU0NGJkNTdhNjM3ZDczOWUxNDkzMzdmY2U0MjU2Zjk0M2YxMzdlYTkzZmQ3ZTA3YTIxZWE5OTBjN2MxZDU2YzA4OTU3Yjc0NTE1ZjY2NzJhZmYyZjYzOTk0MmM4OTU3MmQ4NDJlNDJmMzUyMDQwZDE5ZWQyYWI3MzRiNTBmY2QwYzc1ZmI0OWIwNTVhYWFlYTkwODVhYzFkNmY4NDU2MzZl',
+'Host': 'fanyi.baidu.com',
+'Origin': 'https://fanyi.baidu.com',
+'Referer': 'https://fanyi.baidu.com/',
+'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="101", "Google Chrome";v="101"',
+'sec-ch-ua-mobile': '?0',
+'sec-ch-ua-platform': '"Windows"',
+'Sec-Fetch-Dest': 'empty',
+'Sec-Fetch-Mode': 'cors',
+'Sec-Fetch-Site': 'same-origin',
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36',
+'X-Requested-With': 'XMLHttpRequest',           }
+data = {
+'query': query
+
+}
+data = urllib.parse.urlencode(data).encode('utf-8')
+request = urllib.request.Request(url, data, headers)
+response = urllib.request.urlopen(request)
+content = response.read().decode('utf-8')
+print(content)
+
+
+
+
+

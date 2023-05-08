@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        /*clear
+            作用，清除 浮动元素 对 当前元素所产生的影响(覆盖)
+            值left(清除左浮动)、right、both(两侧谁面积大，清除谁)
+
+        其原理
+            设置清除以后，浏览器会自动为元素添加一个上边距，
+            使其保持原有的布局，不会被覆盖*/
+        #box1{
+            width: 10%;
+            height: 100px;
+            float: left;
+            background-color: red;
+
+        }
+        #box2{
+            width: 20%;
+            height: 200px;
+            float: right;
+            background-color: blue;
+
+        }
+
+        #box3{
+            width: 10%;
+            height: 100px;
+
+            background-color: yellowgreen;
+            clear: left;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+
+</body>
+</html>

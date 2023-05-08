@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <style>
+        div{      /*div 盒子*/
+            /*内容居中*/
+            /*text-align: center;*/
+
+            /*左填充*/
+            padding-left: 27px;
+
+            border-width: 1px;
+            border-style: solid;
+            /*四个圆角*/
+            border-radius: 15px 15px 15px 15px;
+
+            /*盒子边框宽高*/
+            width: 400px;
+            height: 500px;
+            margin: 100px auto;
+        }
+
+
+        div * {
+            /*设置所有边框圆角*/
+            border-radius: 5px 5px 5px 5px;
+
+            /*设置div后代的行高*/
+            line-height: 60px;
+            height: 40px;
+        }
+
+        [name='phone']{
+            width: 195px;
+            height: 40px;
+        }
+        [name='user_name'],[name='pwd']{
+            width: 247px;
+            height: 40px;
+        }
+
+        button{
+            line-height: normal;
+            height: auto;
+        }
+
+        [type='submit']{
+
+            cursor:pointer;
+            border-bottom-style: solid;
+            background-color: #89CBFF;
+
+            width: 315px;
+            height: 40px;
+        }
+
+        [name='captcha']{
+           /* position: fixed;
+            margin-left: 30px;*/
+            width: 143px;
+            height: 40px;
+        }
+        img{
+            cursor:pointer;  /*光标移入变换*/
+            position: relative;
+            margin-top: 12px;
+            margin-left: 5px;
+        }
+
+        /*字体设置*/
+
+
+    </style>
+</head>
+<body>
+
+<div id="register">
+    <!--表单填写-->
+    <span style="font-size: 26px; font-weight: bold;">请注册</span> <br>
+    <span style="font-size: small">已有账号? <a href="#">登录</a></span>
+
+    <form action="" method="get"> {% csrf_token %}
+        用户名: <input name="user_name" type="text" placeholder="请输入用户名"> <br>
+
+        <!--下拉选择框-->
+        手机号:
+        <select name="phone_type" >
+            <option value="+89">+89</option>
+            <option value="+87">+87</option>
+            <option value="+86" selected="selected">+86</option>
+            <option value="+88">+88</option>
+
+        </select>
+        <input name='phone' type="text" placeholder="请输入手机号"> <br>
+
+        密&emsp;码: <input name='pwd' type="password" placeholder="请设置初始输入密码"> <br>
+
+        验证码: <input name='captcha' type="text" placeholder="请输入验证码">
+        <!--<button type='button' onclick="" value="获取验证码">获取验证码</button>-->
+        <img src="picture/002.gif" alt="图片验证码" onclick=""><br>
+        <input name="isAgree" type="checkbox"  autocomplete='on' >
+
+        <!--只有块级元素 能设置位置属性-->
+        <p style="font-size: small; position: relative; top: -86px; left: 20px; "><a href="#">阅读并接受</a> </p> <br>
+
+        <!--<input type="submit" value="注册" style="color: white;font-size: 10px;">-->
+        <!--提交数据 用button标签 代替input标签-->
+        <button type="submit" style="color: white;font-size: 15px; position: relative; top: -140px">
+        <p style="position: relative; height: 40px; width: 30px;  line-height: 40px; margin: 0px auto;">注册</p>
+        </button>
+
+
+    </form>
+
+</div>
+
+
+</body>
+</html>

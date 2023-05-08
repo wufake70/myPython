@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层级</title>
+    <style>
+        /*当元素 开启定位 可以通过z-index属性来指定元素的层级，
+        那么到底该显示那个，可以通过层级来控制，
+        z-index 默认 都是0，可以通过这个来控制优先级，
+
+        祖先元素的层级越高，也不会覆盖后代元素
+*/
+
+        .ul1>li{
+            /*去除原来的样式*/
+            list-style: none;
+            border-width: 2px;
+            position: absolute;  /* 列表会脱离文档流，
+                                    如果只有字体
+                                    所有字符将会重叠在一起，看不清
+                                    需要设置背景才能显*/
+        }
+
+        .l1{
+            background-color: red;
+            z-index: 1;  /*z-index 设置显示的优先级*/
+        }
+        .l2{
+            background-color: cyan;
+            z-index: 2;
+        }
+        .l3{
+            background-color: green;
+            z-index: 3;
+        }
+        .l4{
+            background-color: brown;
+            z-index: 4;
+        }
+
+    </style>
+
+</head>
+<body>
+<span>编程语言</span>
+<ul class="ul1">
+    <li class="l1">MySQL</li>
+    <li class="l2">Java</li>
+    <li class="l3">C语言</li>
+    <li class="l4">Python</li>
+</ul>
+
+</body>
+</html>

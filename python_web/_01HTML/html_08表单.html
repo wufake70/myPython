@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单填写</title>
+</head>
+<body>
+<!--表单填写/提交数据
+    input 标签
+    type  text、password、submit，checkbox，radio，reset、email  (表单项)
+    下拉(选择框)列表 select标签、option标签 （selected默认选中
+    placeholder 提示信息
+-->
+
+<!--
+    form表签 声明表单
+    method属性 提交方式
+    get请求 参数写在 url，  (不安全，提交的内容有长度限制。用于一般的 搜索，页面渲染
+    post请求 参数放在 数据包请求体      (用于 与密码、隐私相关
+
+    action属性 当用户单击确认按钮时，表单的内容会被传送到另一个文件。
+        表单的动作属性定义了目的文件的文件名。
+        由动作属性定义的这个文件通常会对接收到的输入数据进行相关的处理。
+
+    输入框的属性
+        name属性 数据要提交到服务器中，必须为元素设置一个name属性值
+        autocomplete属性 自动补全。 值: on表示开启、off表示关闭
+        readonly属性  表示只能读，数据会提交
+        disabled属性  也表示只能读，数据不会提交
+        autofocus属性 表示 自动获取焦点
+
+-->
+<form action="#" method="post">
+<!--文本输入框
+    name属性 用于前后端交互
+-->
+    用户名:<input name="user_name" type="text" placeholder="请输入用户名"> <br>
+
+<!--密码类型-->
+    密码:<input name="pwd" type="password" placeholder="请输入密码"> </br>
+
+<!--单选框
+    name属性必需一样
+    checked 属性 默认选择
+    value 属性 传给后端的值，男，女 只是给用户看的。-->
+    性别:<input type="radio" name="sex" value="male">男
+        <!--checked="checked" 默认自动勾选-->
+        <input type="radio" name="sex" value="female" checked="checked">女 <br>
+
+<!--提交信息 (也可以使用button标签-->
+    <input type="submit" value="登录">
+<!--重置填写信息 (也可以使用button标签-->
+    <input type="reset" value="重置" autofocus="autofocus">
+
+
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘移动div</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    var div = $('div')
+
+
+   $(document).bind('keydown', function fun(event) {
+       switch (event.keyCode) {
+           case 37:
+               /*alert('左')*/
+               div.css({'left': div.get(0).offsetLeft - 10 })
+               break
+           case 38:
+               /*alert('上')*/
+               div.css({'top': div.get(0).offsetTop - 10 })
+               break
+           case 39:
+               /*alert('右')*/
+               div.css({'left': div.get(0).offsetLeft + 10 })
+               break
+           case 40:
+               /*alert('下')*/
+               div.css({'top': div.get(0).offsetTop + 10 })
+       }
+   })
+
+    /*注意: 这里无法 直接为div元素 添加鼠标事件，只能绑定给整个文档*/
+
+</script>
+</body>
+</html>

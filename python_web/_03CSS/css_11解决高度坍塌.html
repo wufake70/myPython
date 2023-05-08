@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高度坍塌</title>
+    <style>
+        #box1{
+            width: 500px;
+            background-color: red;
+
+        }
+
+        #box2{
+            width: 100px;
+            height: 200px;
+            background-color: green;
+            float: left;
+        }
+
+        #box1::after{
+            content: '';
+            /*clear: right;*/
+            clear: both;  /*清除浮动，即增加自己的外边距*/
+            display: block; /*默认情况下，伪元素是行内元素，需要转换*/
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+<div id="box2">
+
+</div>
+</div>
+</body>
+</html>

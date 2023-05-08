@@ -1,0 +1,164 @@
+{% extends 'Online_Course/base.html' %}
+{% load custom_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>答案搜索</title>
+    {% endblock %}
+
+    {% block style %}
+        <style>
+            .clearfix::before,
+            .clearfix::after{
+                content: '';
+                clear: both;
+                display: table;
+            }
+            .answer-show{
+                width: 75%;
+                height: auto;
+                background: rgb(255,255,255);
+                border-radius: 5px;
+                border: 2px solid rgba(255,255,255, 1);
+                margin: auto;
+                position: relative;
+                top: 60px;
+                border: 1px solid black;
+                padding: 5px;
+                {#overflow: auto;#}
+            }
+            .ul-style{
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #ededed;
+            }
+
+            .title{
+                font-size: 19px;
+                line-height: 25px;
+                color: black;
+                font-weight: bold;
+                margin: 4px 0px 10px 0px;
+            }
+            .content{
+                display: block;
+                font-size: 17px;
+                color: #999aaa;
+                margin-bottom: 10px;
+            }
+            .answer-course{
+                font-size: 14px;
+            }
+            .answer{
+                float: left;
+                color: #df5000;
+
+            }
+            .course{
+                float: right;
+                color: #999aaa;
+            }
+            a.title{
+                display: block;
+                text-decoration: none;
+            }
+
+
+        </style>
+
+
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="search-box">
+        <input type="text" name="search-content" autocomplete="on" style="width: 800px; height: 30px; margin-left: 300px;">
+        <input type="submit" value="搜索">
+
+    </div>
+
+
+    <div class="answer-show">
+    <span style="color: pink; font-size: 20px; margin: 4px 5px">答案展示区 </span> <br>
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script>
+    var btn = $('[type="submit"]'),
+        text = $('[type="text"]'),
+        show = $('div.answer-show')
+
+    btn.on('click', reqs)
+
+    function reqs() {
+        $.ajax({
+            url: '',
+            method: 'POST',
+            data: 'SearchContent='+text.val(),
+            success: function (data) {
+
+{#                js 生成 html骨架#}
+                if (data) {
+
+                    $('div.answer-show ul').remove()
+                }
+                for (var i = 0,t_code; i < data.length; i++) {
+
+                    handle_data(data[i])
+                    t_code = '<ul class="ul-style">' +
+                        '<a class="title" target="_blank" href="./' + data[i].id + '/">' +data[i].title + '</a>' +
+                        '<li class="content">选项:   ' +data[i].content.slice(0,50) + '</li>' +
+                        '<div class="answer-course clearfix"><li class="answer">答案:  ' +data[i].answer + '</li>' +
+                        '<li class="course">课程: ' +data[i].course + '</li></div>' +
+                        '</ul>'
+
+                    //alert(t_code)
+                    show.append(t_code)
+
+                }
+
+
+            },
+            error: function () {
+                console.log('访问出错!!!')
+
+            }
+        })
+    }
+
+    // 数据格式化
+    function handle_data(param) {
+        // 除去标题序号
+        param.title = param.title.replaceAll(/(^\d{1,2}、)|(^\d{1,2})/g,'')
+
+        // 格式化 题目的课程
+        param.course = param.course.replaceAll(/(超星)|(尔雅)|(网课)|(章节)|(测试)|(学习通)|(答案)|(免费)|(分享)/g, '')
+
+
+        try{
+            // 格式化答案
+            param.answer = param.answer.replaceAll(/(\d{1,2}.\d{1,2})/g, '')
+            param.answer = param.answer.replaceAll(/([对错X√]).*/g, '$1')
+        } catch {
+
+        }
+
+
+    }
+
+
+
+    </script>
+
+{% endblock %}
+</body>
+</html>

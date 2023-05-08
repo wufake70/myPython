@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮廓阴影和圆角</title>
+    <style>
+        div{
+            /*border: 10px solid red; */ /*如果将设置成边框，div下面的元素span 会被挤下去*/
+
+            /*但如果设置成 轮廓，并不会影响元素的布局*/
+            /*outline: 10px solid blue;*/
+
+            /*阴影，也不会影响页面布局*/
+            box-shadow: 0px 5px 10px grey;
+            /*前三参数是 左侧偏移量，上侧偏移量，阴影半径(值越大，模糊效果越好)*/
+
+
+            /*圆角*/
+            /*border-radius: 50%;*/  /*圆形*/
+            /*左上角，右上角，右下角，左下角*/
+           /* border-radius: 100px 0px 0px 100px; */ /*左半角*/
+        }
+
+
+    </style>
+</head>
+<body>
+<div style="width: 200px; height: 200px; background-color: white;">
+</div>
+<span>hello world</span>
+
+</body>
+</html>

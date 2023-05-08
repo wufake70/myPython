@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * JSON   JavaScript object notation
+    *   -js中的对象只有js自己认识，其他的语言都不认识
+    *   -JSON就是一种特殊的字符串，这个字符串可以被 任意的语言 所识别，
+    *   并且可以转化内 任意语言 中的 对象。
+    *   是 一种轻量级的数据交换格式
+    *
+    *
+    * */
+
+    //创建一个对象
+   //json对象   注意: JSON中键名 必须加上 双引号
+    var obj = '{"name": "孙悟空", "age": 10, "gender": "男"}'
+
+    // json数组
+    var obj2 = '[1,3,4]'
+
+    //JSON中允许的值:
+    /*1.字符串
+    2.数值
+    3.布尔值
+    4.null
+    5.对象
+    6.数组
+    * */
+
+    //JSON对象 与 js中的对象的相互转换
+    /*在JS中，为我们提供了一个JSON对象，
+    他可以实现互转功能
+    * */
+    //json--> js
+    //法一
+    /*obj = JSON.parse(obj)*/
+    //法二
+    /*eval函数 可以执行一段字符串形式的js代码，并将执行结果返回
+    如果eval() 函数执行的字符串中含有 {} ,他会将{} 看成 代码块
+     如果不希望当作代码块来解析，则需要加上 括号 ()
+    * */
+
+    obj = eval('('+obj+')')
+    alert(obj.name)
+    //js-->json
+    obj = JSON.stringify(obj)
+    alert(typeof obj)
+
+</script>
+</body>
+</html>

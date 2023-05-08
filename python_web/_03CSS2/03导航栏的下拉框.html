@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉框</title>
+    <style>
+
+        .box{
+            width: 100px;
+        }
+
+        #box1{
+            width: 100px;
+            height: 40px;
+            background-color: red;
+        }
+
+        /*下拉框的内容*/
+        #box2{
+            display: none;  /*没触发前先隐藏*/
+            width: 100px;
+            height: 300px;
+            background-color: green;
+        }
+
+        /*鼠标划入触发下拉框*/
+        /*第一组，给#box1设置划入的伪类，改变的是其相邻兄弟元素 #box2的样式，
+        如果只有第一组是不行的，当鼠标划入下拉框(#box2)时,下拉框就会消失*/
+        /*第二组，在给 #box2设置划入的伪类，使鼠标划入其中也可以显示，*/
+        /*#box1:hover+#box2,
+        #box2:hover{
+            display: block;
+        }*/
+
+        /*第二种写法:*/
+        /*直接给他们的祖先元素box 设置划入效果，样式的效果作用于 box2*/
+        /*注意:选择器的优先级 是否到要求*/
+        .box:hover #box2{
+            display: block;
+            /*display: none;*/
+            position: absolute;
+        }
+        /* 注意:导航条与下拉框之间 不要留缝隙，否则无法触发划入效果*/
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div id="box1" class="box1">
+        我是div盒子
+    </div>
+
+    <div id="box2" class="box2">
+        我是盒子2
+    </div>
+</div>
+
+</body>
+</html>

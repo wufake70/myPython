@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <link rel="stylesheet" href="./RESET_CSS/reset.css">
+    <style>
+        .d1{    /*设置橱窗大小及位置*/
+            width: 590px;
+            height: 470px;
+            position: relative;
+            left: 475px;
+            top: 100px;
+        }
+
+        /*设置优先展示的类 */
+        .li1{
+            z-index: 1;   /*层级优先级*/
+        }
+        /*图片 共同的样式*/
+        .li2{
+            display: list-item;
+            list-style: none;
+            position: absolute;     /*脱离文档流 图片重叠*/
+            cursor: pointer;
+        }
+
+
+
+        /*设置 切换图片的按钮样式*/
+        .d1>button{
+            width: 25px;
+            height: 25px;
+            border: 1px solid grey;
+            background-color: grey;
+
+            /*设置不可透明度*/
+            opacity: 50%;
+
+            /*该值为边框的一半(50%)时就为圆形*/
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;   /* 设置 层级优先级*/
+        }
+        .b_right{
+            position: absolute;
+            left: -1px;
+            top:50%
+        }
+        .b_left{
+            position: absolute;
+            left: 565px;
+            top:50%
+
+        }
+
+        /*设置小圆点样式*/
+        .dot4{
+            width: 8px;
+            height: 8px;
+            border: 1px solid white;
+            background-color: grey;
+            border-radius: 50%;
+            opacity: 90%;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        /*小圆点同步*/
+        .dot5{
+            width: 8px;
+            height: 8px;
+            border: 1px solid white;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 90%;
+            cursor: pointer;
+            z-index: 5;
+        }
+        /*小圆点位置*/
+        /*.dot1{
+             position: absolute;
+            left: 256px;
+            top:420px;
+        }
+        .dot2{
+             position: absolute;
+            left: 276px;
+            top:420px;
+        }
+        .dot3{
+             position: absolute;
+            left: 296px;
+            top:420px;
+        }
+        .dot4{
+
+        }*/
+
+
+        /* 鼠标划入高亮 伪类*/
+         .d1>button:hover{
+            background-color: white;
+        }
+         .d2>div:hover{
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+<div class="d1">
+    <!--图片切换按钮-->
+    <button class="b_left">
+        <i> &gt; </i>
+    </button>
+    <button class="b_right">
+        <i> &lt; </i>
+    </button>
+
+    <!--小圆点-->
+    <div class="d2">
+        <div class="dot5" style=" position: absolute;left: 256px;top:420px;"></div>
+        <div class="dot4" style=" position: absolute;left: 276px;top:420px;"></div>
+        <div class="dot4" style=" position: absolute;left: 296px;top:420px;"></div>
+        <div class="dot4" style=" position: absolute;left: 316px;top:420px;"></div>
+
+    </div>
+
+
+    <!--商品列表-->
+    <ul class="u1">
+
+        <!--列表标签是块级元素-->
+        <li class="li1 li2">
+            <a href="">
+                <img src="./picture/001.jpg" alt="商品">
+            </a>
+
+        </li>
+        <li class="li2">
+            <a href="">
+                <img src="./picture/002.jpg" alt="商品">
+            </a>
+
+        </li>
+        <li class="li2">
+            <a href="">
+                <img src="./picture/003.jpg" alt="商品">
+            </a>
+
+        </li>
+        <li class="li2">
+            <a href="">
+                <img src="./picture/004.jpg" alt="商品">
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+<div>
+    <p style="height: 2000px"></p>
+</div>
+<script>
+    var list = document.querySelectorAll('.u1>li'),    // 通过类选择器 获取class=.u1 的子代 li标签，并接收在 数组对象里
+        list2 = document.querySelectorAll('.d2>div'),   // 获取 所有小圆点元素
+        b_right = document.getElementsByClassName('b_left')[0],
+        b_left = document.getElementsByClassName('b_right')[0]
+
+    //          切换图片按钮设置
+    for (var i = 0;i<list.length; i++) {
+        list[i].setAttribute('index_num', i)    // 添加新属性 用于标记
+    }
+
+    // 为左键(-1)  绑定点击事件
+    b_left.onclick = function () {
+        var active = document.querySelector('.li1'),  // 获取当前正在显示的 元素
+        next = active.getAttribute('index_num') - 1  //下一张图片的index_num 值
+        if (next < 0) {
+            next = list.length - 1
+            list[next].className = 'li1 li2'   // 按钮
+            list2[next].className = "dot5"     // 同步高亮小圆点
+            list2[0].className = 'dot4'         // 去除原来高亮小圆点
+        }else {
+            list[next].className = 'li1 li2'
+            list2[next].className = "dot5"
+            list2[next + 1].className = 'dot4'
+        }
+        active.className = 'li2'   // 去除他的 层次优先级的类
+
+    }
+
+    // 为右键(+1)  绑定点击事件
+    b_right.onclick = function () {
+        /*alert(999)*/
+        var active2 = document.querySelector('.li1'),  // 获取当前正在显示的 元素 ,通过层级优先的类 li1
+        next2 = Number(active2.getAttribute('index_num')) + 1  //上一张图片的index_num 值,非法属性 要用 getAttribute
+        if (next2 > list.length - 1) {                        //注意属性值都为 字符串，做加法，要使用Number() 类型转换
+            next2 = 0                                           // 其他运算可不用*****
+            list[next2].className = 'li1 li2'
+            list2[next2].className = 'dot5'
+            list2[3].className = 'dot4'
+        }else {
+            list[next2].className = 'li1 li2'
+            list2[next2].className = 'dot5'
+            list2[next2 - 1].className = 'dot4'
+        }
+        active2.className = 'li2'   // 去除他的 层次优先级的类
+    }
+
+
+    //            小圆点绑定点击事件
+    for (let i = 0; i < list2.length; i++ ) {
+        list2[i].onclick = function () {
+            //alert(i)        // 使用let 声明 块级局部变量
+            var active1 = list[i],      //获取对应索引的 li 元素
+                active2 = document.querySelector('.li1'),   //获取当前正在显示 li 元素
+                act_dot1 = list2[i],            //获取对应索引的 小圆点 元素
+                act_dot2 = document.querySelector('.dot5')      // 获取当前正在高亮的 小圆点 元素
+
+
+            if (active1 === active2) {   //判断点击的元素 与显示的元素 为同一个元素
+                active1.className = 'li1 li2'
+            }else {
+                active1.className = 'li1 li2'
+                active2.className = 'li2'
+                act_dot1.className = 'dot5'
+                act_dot2.className = 'dot4'
+
+            }
+
+
+        }
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

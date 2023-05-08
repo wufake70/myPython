@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq操作html属性和css样式</title>
+</head>
+<body>
+<div class="d1">
+  我是div盒子
+    <span>
+    你好，我是文本标签
+    </span>
+</div>
+
+
+
+
+<script src="jQuery/jQuery.js"></script>
+<script>
+    //操作属性， 无则增，有责改
+    $("div").attr('style', 'color: red;font-size: 50px')    // 添加属性
+    $("div").removeAttr('style')                // 移除属性
+    //alert($("div").attr('class'))    // attr()可以用于判断是否函数某个属性，
+                                    // 有返回对应值，无就返回undefined
+
+
+    /*
+    * 通过js的style属性 去修改页面样式css，执行性能较差，**结构和行为的耦合**
+    * 通过js 操作 类属性 达到修改页面的样式，性能高
+    * 实现了**css代码和js代码分离**，维护起来较容易*/
+
+    //操作 类属性
+    $("div").addClass("box1")   //增加class值,即使原来没有class属性也可以增加
+    $("div").removeClass('box1') //删除class值
+    // alert($("div").hasClass('d2'))   //判断是否含有某个 类属性值
+
+    $("div").toggleClass('d1')      //有 d1 类属性值就删去      （有则删，无则增 ，用修改样式
+    $("div").toggleClass('d1 d2')  //没有 类属性值 就增加
+
+
+    //修改样式
+    $("div").css('background', 'red')  //添加单个样式属性
+    $('div').css({      //添加多个样式,大括号键值对，注意：都是字符串
+        'width': '400px',
+         'height': '400px',
+        'border': '2px solid blank',
+
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

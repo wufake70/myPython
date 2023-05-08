@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素</title>
+    <style>
+        /*伪元素: 不存在的元素，用于给特定位置设置样式,使用双冒号开头
+        相当于设置了不存在的标签元素
+        */
+        p::first-letter{  /*p标签的第一个字符*/
+            color: cyan;
+        }
+        p::first-line{ /*p标签的的一行*/
+            color: yellowgreen;
+        }
+        p::selection{  /*当鼠标拖动选择，会给选择的内容设置新的样式*/
+            color: blue;
+            background-color: black;
+        }
+
+
+        div::before{  /*div内最前面，必须与content使用*/
+        content: '9999';
+        }
+        div::after{  /*div内最后面，必须与content使用*/
+        content: '9999000';
+        }
+        /*注意: 通过css伪元素增加的内容，在页面是选不中的
+        引用场景:
+        1.q标签（引用标签）的双引号就是 通过为元素的before、after 加上的*/
+
+    </style>
+</head>
+<body>
+<p>
+     hello world!!! I am css <br>
+     hello world!!! I am css
+</p>
+<p>
+    你好世界
+</p>
+<div>
+    我是盒子div
+</div>
+<q>我是引用标签(我会自动加上双引号)</q>
+</body>
+</html>

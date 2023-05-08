@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <style>
+        .d1{  /*设置div盒子*/
+            width: 400px;
+            height: 400px;
+
+            border: 1px solid black;
+            position: relative;
+            top: 70px;
+            left: 550px;
+            line-height: 40px;
+        }
+
+        /*原始样式*/
+        .d2{
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: cyan;
+            border: 2px solid black;
+            position: relative;
+            top: 80px;
+            left: 147px;
+        }
+
+        /*表单内容样式*/
+        .d1>form{
+            /*position: absolute;  脱离文档流*/
+            position: relative;
+            top: 10px;
+            left: 70px;
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="d1">
+    <form class="f1">
+
+        属&emsp;性: <input type="text" placeholder="请输入属性"> <br>
+        属性值: <input type="text" placeholder="请输入属性值"> <br>
+
+        <!--表单中button 默认类型为submit 提交-->
+        <button type="button" class="b1">
+            <span>设置属性</span>
+        </button>
+        <button type="button" class="b2">
+            <span>重置</span>
+        </button>
+    </form>
+    <div class="d2">
+        <span>快来修改我吧</span>
+    </div>
+</div>
+
+<!--js代码-->
+<script>
+    var b1 = document.getElementsByClassName('b1')[0],
+        b2 = document.getElementsByClassName('b2')[0],
+        a = document.getElementsByClassName('d2')[0]
+
+
+    // 给按钮1绑定点击事件
+    b1.onclick = function () {
+        /*alert(888)*/
+
+        //获取表单的值,均为字符串类型
+        var var1 = document.getElementsByTagName('input')[0].value,
+            var2 = document.getElementsByTagName('input')[1].value
+
+        //console.log(var1, var2)
+
+        if (var1 === '' || var2 === '') {   // 判断是否为空
+
+            alert('请填入完整信息')
+        } else {
+
+            // 创建 正则对象,判断输入内容
+            // 匹配非法字符
+            var rule1 = new RegExp('[^a-z -]', 'g')     //[^a-z]/g 不推荐使用
+                rule2 = new RegExp('[^a-z\\d]', 'g')  //用new方法编写正则匹配模式，
+                                                    // 元字符要加 '\' 去除字符串转义
+            var result1 = rule1.test(var1),
+                result2 = rule2.test(var2)
+
+            /*alert(result1)
+            alert(result2)*/
+            if (result1 || result2) {
+                alert('非法输入，请重试！！')
+            }else{
+
+                //判断是否修改
+                var b = a.style[var1]  // 可能值有未定义undefined
+                //alert(b)
+                a.style[var1] = var2   // 添加的都是行内样式
+
+                if (b === a.style[var1] || b === undefined) {
+                    alert('修改失败，请重试')
+                }else {
+                    alert('修改成功')
+                }
+            }
+        }
+    }
+
+    //设置重置按钮
+    b2.onclick = function () {
+        a.removeAttribute('style')  // 移除添加的行内样式
+        alert('重置成功')
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+常用命令：
+
+盘符切换 E:
+
+查看当前目录下所有的文件 dir
+
+进入同级的其他目录 cd  videos
+
+进入不同级的其他目录 cd /d music
+
+返回上一级 cd ..
+
+创建文件夹 md test
+
+删除文件夹 rd test
+
+创建文件 cd>test.txt
+
+删除文件 del test.txt
+
+清楚屏幕 cls
+
+退出终端 exit
+
+查看电脑ip地址 ipconfig
+
+获取网站的ip地址 ping www.baidu.com
+
+打开计算器 calc
+
+打开画图工具 mspaint
+
+打开记事本 notepad

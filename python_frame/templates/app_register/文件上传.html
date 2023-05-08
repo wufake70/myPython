@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <style>
+        html{
+            background-image: url("{% static 'admin/img/myblog/背景图.jpg' %}");
+        }
+    </style>
+
+</head>
+<body>
+登录: {{ user }}  <br>
+<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="file" name="file">
+    <input type="submit" value="提交">
+
+
+
+</form>
+
+</body>
+</html>

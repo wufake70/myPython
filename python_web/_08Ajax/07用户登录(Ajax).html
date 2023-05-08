@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div{      /*div 盒子*/
+            /*内容居中*/
+            /*text-align: center;*/
+
+            /*左填充*/
+            padding-left: 27px;
+
+            border-width: 1px;
+            border-style: solid;
+            /*四个圆角*/
+            border-radius: 15px 15px 15px 15px;
+
+            /*盒子边框宽高*/
+            width: 400px;
+            height: 600px;
+
+            position: relative;
+            top: 113px;
+            left: 560px;
+        }
+
+
+        div * {
+            /*设置所有边框圆角*/
+            border-radius: 5px 5px 5px 5px;
+
+            /*设置div后代的行高*/
+            line-height: 60px;
+            height: 40px;
+        }
+
+        [name='phone']{
+            width: 195px;
+            height: 40px;
+        }
+        [name='user_name'],[name='pwd']{
+            width: 247px;
+            height: 40px;
+        }
+
+        button{
+            line-height: normal;
+            height: auto;
+        }
+
+        [type='button']{
+
+            cursor:pointer;
+            border-bottom-style: solid;
+            background-color: #89CBFF;
+
+            width: 315px;
+            height: 40px;
+        }
+
+        /*[name='captcha']{
+           !* position: fixed;
+            margin-left: 30px;*!
+            width: 143px;
+            height: 40px;
+        }
+        img{
+            cursor:pointer;  !*光标移入变换*!
+            position: fixed;
+            margin-top: 12px;
+            margin-left: 5px;
+        }*/
+
+        /*字体设置*/
+
+
+    </style>
+</head>
+<body>
+
+<div id="register">
+    <!--表单填写-->
+    <span style="font-size: 26px; font-weight: bold;">请注册</span> <br>
+    <span style="font-size: small">已有账号? <a href="#">登录</a></span>
+
+    <form action="#" method="post">
+        用户名: <input name="user_name" type="text" placeholder="请输入用户名"> <br>
+
+        <!--下拉选择框-->
+        手机号:
+        <select name="phone_type" >
+            <option value="+89">+89</option>
+            <option value="+87">+87</option>
+            <option value="+86" selected="selected">+86</option>
+            <option value="+88">+88</option>
+
+        </select>
+        <input name='phone' type="text" placeholder="请输入手机号"> <br>
+
+        密&emsp;码: <input name='pwd' type="password" placeholder="请设置初始输入密码"> <br>
+
+        <!--验证码: <input name='captcha' type="text" placeholder="请输入验证码">
+        &lt;!&ndash;<button type='button' onclick="" value="获取验证码">获取验证码</button>&ndash;&gt;
+        <img src="picture/002.gif" alt="图片验证码" onclick=""><br>
+        <input name="isAgree" type="checkbox"  autocomplete='on' >-->
+
+        <!--&lt;!&ndash;只有块级元素 能设置位置属性&ndash;&gt;
+        <p style="font-size: small; position: fixed; margin-top: -75px; margin-left: 20px"><a href="#">阅读并接受</a> </p> <br>-->
+
+        <!--<input type="submit" value="注册" style="color: white;font-size: 10px;">-->
+        <!--提交数据 用button标签 代替input标签-->
+        <span class="s1" style="font-weight: bolder; font-size: large; position: absolute; top:291px; left: 157px;">个人信息填写</span> <br>
+        <!--单选框 type为radio 选择的元素的 name标签 必须相同-->
+          <span style="position: absolute; top: 312px;">
+              性别: <input name='sex' type="radio" value="男" style="position:relative; top: 16px"> <span>男</span>
+              <input name='sex' type="radio" value="女" style="position:relative; top: 16px"> <span>女</span>
+          </span> <br>
+        <span style="position:relative; top: -68px;">个人介绍:</span> <br>
+        <input name='peo_info' type="text" placeholder="爱好" style="width: 302px; height: 50px; border: 1px solid black; position: relative; top: -70px;">
+        <br>
+        <!--button type设置为button 防止以表单形式提交 -->
+        <button type="button" style="color: black;font-size: 17px; position: absolute; top:490px">
+        <p style="position: absolute; margin-left: 130px; margin-top: -30px">注册</p>
+        </button>
+    </form>
+</div>
+<!--只能使用 网址引入jQuery文件-->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    let ipt = $("[name='user_name'], [name='phone_type'], [name='phone'],[name='pwd'], [name='peo_info']"),
+        btn = $("button")
+
+
+    //alert(ipt.length)  数据个数
+    // 为提交按钮绑定点击事件
+    btn.click(function () {
+
+        // 获取选中值，未选中值时为undefined 以下方法有效
+        //alert($('input:radio:checked').val())
+        //alert($('input[name="sex"]:radio:checked').val())
+
+        //判断数据是否输入完整
+        //单独确认复选框
+        if ($('input:radio:checked').val()===undefined) {
+            alert('未选中单选框!!!')
+            return false   // js中 return false 才能终止函数
+        }
+        // 遍历提交的数据 是否为空
+        var result
+        ipt.each(function () {
+            if ($(this).val() === '') {
+                alert('请完备信息！！！')
+                result = false
+                return result   // js中 return false 才能终止(该)函数 (只能终止最内层函数
+            }
+            //alert($(this).val())
+        })
+        if (result == false) {      // 若有空值就跳出 最外层函数
+            //alert(9)
+            return false
+        }
+
+
+        var d1 = ipt.eq(0).val(),
+            d2 = ipt.eq(1).val(),
+            d3 = ipt.eq(2).val(),
+            d4 = ipt.eq(3).val(),
+            d5 = ipt.eq(4).val(),
+            d6 = $("input[name='sex']:radio:checked").val()     // 单选框的值
+
+        $.ajax({
+            "type": "post",
+            "url": "/",
+            "data": {
+                "d1": d1,
+                "d2": d2,
+                "d3": d3,
+                "d4": d4,
+                "d5": d5,
+                "d6": d6
+            },
+            "success": function () {
+                alert('success')
+            }
+        })
+
+    })
+</script>
+
+</body>
+</html>

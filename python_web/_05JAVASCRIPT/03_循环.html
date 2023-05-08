@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+</head>
+<body>
+
+<ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+
+<script>
+/*    /!*1.for循环*!/
+    for (var i=1;i<10;i++) {  // 执行流程 1.声明变量，2.条件判断，3.执行循环代码、4.自增
+    document.write(i+"<br>")
+        if (i == 6){
+            /!*break  结束循环*!/
+            /!*continue 跳出当次循环*!/
+        }
+    }
+
+
+    /!*2.while循环*!/
+    var i = 1
+    while (i<10) {  // 执行流程 1.声明变量，2.条件判断，3.执行代码、4.自增
+        document.write(i+'<br>')
+        i++   // 自增
+        /!*break*!/
+    }
+
+    /!*3.do ... while循环*!/
+    var a = 1
+    do{    //先执行 在判断
+        document.write(a+'<br>')
+        a++
+    }while(a<9)
+
+    /!*4.for in 语句*!/
+    var array = [1,2,3,4,5,6]
+
+    for (var i in array) {   //  i变量接收的array的索引 从0开始
+        document.write(i+"<br>")
+        document.writeln(array[i]+"<br>")
+    }*/
+
+
+
+    // for循环里面，需要使用let关键字声明 局部变量
+    var aa = document.getElementsByTagName('li')  // 到元素的数组
+    for (var i=0;i<aa.length;i++) {
+        /*document.writeln(aa[i].textContent+"<br>")*/
+
+        // 如果 要使用var关键字，可以为元素添加新属性 用于存储数据。 (注意: 这个属性是js对象属性 不是html元素节点的的属性(setAttribute))
+        aa[i].index_num = i
+
+        //为元素添加点击事件
+        aa[i].onclick = function () {
+
+            /*alert(this.innerText)*/  //this 表示当前的 操作的元素
+            //alert(i)  //这里的 i为索引值，如果用var关键字 i为全局变量，最后所有点击事件 的i都为4.
+                        //但如果使用 let关键字，每个点击事件的 i值不会改变
+
+            //方法二
+            alert(this.index_num)   //this 代表当前的元素对象
+
+        }
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq动画</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+</div>
+<button id="btn1">按钮一</button>
+<button id="btn2">按钮二</button>
+
+<script src="./jQuery/jQuery.js"></script>
+<script>
+    //点击按钮一 hide隐藏
+    /*$("#btn1").click(function () {
+        $('div').hide(3000)  // 隐藏的时间 ms
+    })*/
+
+    //电按钮二 show显示          //以上两个可用于轮播图
+    /*$("#btn2").click(function () {
+        $('div').show(3000)
+    })*/
+
+
+    //向上影藏
+    /*$("#btn1").click(function () {
+        $('div').slideUp(2000)  // 隐藏的时间 ms
+    })*/
+    //向下显示
+    /*$("#btn2").click(function () {
+        $('div').slideDown(3000)  // 出现 的时间 ms
+    })*/
+
+
+    //淡出
+    /*$("#btn1").click(function () {
+        //$('div').fadeOut(3000)
+        //$('div').fadeToggle(3000)   //自动淡入回来
+        $("div").fadeTo(2000, 0.7)  //可以单独设置 最小透明度
+    })*/
+    //淡入
+    /*$("#btn2").click(function () {
+        $('div').fadeIn(3000)
+    })*/
+
+
+    //动画  //只能更改大小样式，位置样式(元素的位置 不能是静态位置，固定位置
+    $("#btn1").click(function () {
+        $('div').animate({
+            'width': '100px',
+            'height': '100px',
+            'left': '200px',
+        },3000).delay(3000).animate({       //延迟3秒 回到原位
+            'width': '200px',
+            'height': '200px',
+            'left': '0px',
+        },3000)
+    })
+    //终止动画，
+    $("#btn2").click(function () {
+        $('div').stop()
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

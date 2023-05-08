@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定键盘事件</title>
+</head>
+
+    <input type="text" placeholder="99999999"> <br>
+    <!--<input class="tt9" type="text" placeholder="99999999">-->
+
+<body>
+<script src="jQuery/jQuery.js"></script>
+<script>
+    /*
+    * 键盘事件
+    * onkeydown
+    *   键盘被按下
+    *   如果一直按着某个键不松手，事件一直触发
+    *   按着不松手时，第一次和第二次之间 会有时间间隔
+    *
+    * onkeyup
+    *   键盘被松开
+    *
+    * 注意: 键盘事件 一般都会绑定给一些可以 获取到焦点的对象(input) 或者是 document
+    *       如果直接绑定给div 事件无法被触发*/
+
+
+
+    function keyboard(event) {
+            if (event.keyCode == 13) {
+                alert('回车键被按下了')
+            }else if (event.keyCode == 32) {
+                alert('空白键被按下了')
+            }
+    }
+
+    //参数1：表示事件，keydown:键盘向下按；参数2：表示触发的事件处理函数
+    // 13 回车键；32 空白键
+    //document.addEventListener("keydown", keyboard);   // js 绑定
+    //$("*").bind('keydown', keyboard)    // jq 绑定 键盘事件事件
+    $("input").on('keydown', keyboard)    // jq 绑定 键盘事件事件
+                                    // $("*") 表示 选择所有的元素,会有冒泡事件发生
+    //$("*").unbind('keydown',)       // 为所有有元素 接触绑定的 keydown 事件
+
+    /*注意: 该事件能触发的前提是 相关元素获得焦点*/
+
+    //$('input').keydown()  /*触发 键盘按下事件*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

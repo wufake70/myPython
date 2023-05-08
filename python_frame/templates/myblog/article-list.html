@@ -1,0 +1,259 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block css %}
+    <style>
+    .clearfix::before,
+    .clearfix::after{
+        content: '';
+        display: table;
+        clear: both;
+
+    }
+
+    html{
+        overflow-y: hidden;
+    }
+
+    div.table{
+        height: 680px;
+        margin-left: 15px;
+    }
+    table{
+        {#margin:  15px;#}
+        width: 1300px;
+        {#height: 680px;#}
+        border: 1px solid black;
+        {#text-align: left;#}
+        border-spacing: 0px;
+    }
+    td,th{
+        line-height: 30px;
+        border: 1px solid black;
+
+    }
+    tr:nth-child(odd){
+        background-color: cyan;
+        opacity: 0.5;
+    }
+    div tr:nth-child(1)~tr:hover,
+    div tr:nth-child(1)~tr a:hover{
+        color: #df5000 !important;
+        opacity: 1;
+        background: white;
+    }
+    a{
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        margin: 0px 15px;
+    }
+    .title{
+        width: 80%;
+    }
+    .delete{
+        /*消除button的默认样式*/
+        /*这种写法是对所有的button标签同时生效*/
+        margin: 0px;
+        padding: 0px;
+        /*自定义边框*/
+        border: none;
+        /*消除默认点击蓝色边框效果*/
+        outline: none;
+        background: transparent;
+
+    }
+    .delete:hover{
+        cursor: pointer;
+    }
+
+    {# 弹窗提示 时的 灰黑背景#}
+    .grey-mask{
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        position: fixed;
+        background: grey;
+        opacity: 0.5;
+        z-index: 99;
+    }
+    {#提示框 #}
+    .tips{
+        width: 400px;
+        height: 190px;
+        border-radius: 10px;
+        border: 2px solid black;
+        margin: auto;
+        text-align: center;
+        font-size: 25px;
+        color: red;
+        background: white;
+        opacity: 1;
+        position: fixed;
+        left: 540px;
+        top: 150px;
+        z-index: 9999;
+    }
+    .tips>span{
+        line-height: 50px;
+    }
+    #btn1{
+        position: absolute;
+        left: 40px;
+        top: 140px;
+    }
+    #btn2{
+        position: absolute;
+        left: 300px;
+        top: 140px;
+    }
+    {#消失术#}
+    .invisible{
+        display: none;
+    }
+
+
+    </style>
+{% endblock %}
+
+{% block title %}
+    文章列表
+{% endblock %}
+
+{% block head %}
+
+    <br>
+    <a href="{% url 'blog_index' %}">返回首页</a>
+
+    <a href="{% url 'add' %}">添加文章</a>
+    {% if pages.has_previous %}
+        <a href="{% url 'list' %}"?page="{{ pages.previous_page_number }}">上一页</a>
+    {% endif %}
+    {% if pages.has_next %}
+        <a href="{% url 'list' %}?page={{ pages.next_page_number }}">下一页</a>
+    {% endif %}
+
+<br><br>
+    <div class="table">
+    <table>
+    <tr>
+        <th>标题</th>
+        <th>浏览次数</th>
+        <th>操作</th>
+        <th>作者</th>
+    </tr>
+{#    循环展示， 文章列表 #}
+    <tb>
+{#    {% for blog in blog_list  %}#}
+    {% for blog in pages %}
+        <tr>
+            <td >
+    {#            去到 文章的详情页#}
+                <a href="{% url 'blog_detail' blog.id %}" class="title">{{ blog.title }}</a>
+            </td>
+            <td>
+                <span class="view"></span>
+            </td>
+            <td>
+                <a href="{% url 'blog_edit' blog.id %}">编辑</a> &emsp;&emsp; <button class="delete" value="{{ blog.id }}">删除</button>
+            </td>
+            <td>
+                <span>{{ blog.author.name }}</span>
+            </td>
+        </tr>
+    {% endfor %}
+    </tb>
+    </table>
+
+    </div>
+
+
+    <br>
+{#    <a href="{% url 'blog_index' %}">返回首页</a>#}
+{#    &emsp;&emsp;#}
+{#    <a href="{% url 'add' %}">添加文章</a>#}
+    <div>
+        <div class="grey-mask invisible">
+        </div>
+        <div class="tips invisible">
+             <span>确定删除这篇文章吗 <br> 这是不可逆操作欧</span>
+             <button id="btn1" value=1>确定</button>
+             <button id="btn2" value=0>取消</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+        var del = $(".delete"),
+            mask = $(".grey-mask"),
+            tip = $(".tips"),
+            btn1 = $('#btn1'),
+            btn2 = $('#btn2'),
+            view = $('.view'),
+            view_data = {{ view }}
+
+        // 为每一个 blog 绑定 删除事件
+        del.each(function () {
+            var blog_id = $(this).val()
+
+            $(this).click(function () {
+                //显示 提示框
+                tip.toggleClass('invisible')
+                mask.toggleClass('invisible')
+
+                // 确定 删除
+                btn1.click(function () {
+                    //post请求时用来绕过csrf验证的，同表单提交的{% csrf_token %}一样
+                    $.ajaxSetup({data: {csrfmiddlewaretoken: '{{ csrf_token }}'}})
+                    $.ajax({
+                        url: "../delete/"+blog_id+"/",
+                        type: "post",
+                        data: {},
+                        success: function (data) {
+                            if (data) {
+                                alert(data)
+                            }
+                            window.location.reload()
+
+                        },
+                        // 后台数据处理错误时，浏览器 调用 回调函数
+                        error: function () {
+                            console.log('后台数据处理错误!!!')
+                            tip.toggleClass('invisible')
+                            mask.toggleClass('invisible')
+                        }
+                    })
+                    tip.toggleClass('invisible')
+                    mask.toggleClass('invisible')
+
+                })
+
+                //取消 删除
+                btn2.click(function () {
+                    tip.toggleClass('invisible')
+                    mask.toggleClass('invisible')
+                    btn2.off('click')
+                })
+
+        })
+        })
+
+        //js 接收 后台传来的 数据(浏览次数)
+        var index = 0
+        view.each(function () {
+            $(this).text(view_data[index])
+            index++
+        })
+
+
+
+
+
+
+    </script>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    /*js 构造函数 类似 Python 的类*/
+
+    // 创建一个构造函数
+    function People(name ,age) {  //构造函数  类型
+        this.name = name
+        this.age = age
+    }
+
+    var p1 = new People('孙悟空', 10),  //  根据类型(构造函数)创建 实例对象p1，p2
+        p2 = new People('猪八戒', 20)   //  注意实例化对象时 new 不能少
+    alert(p1.name)
+</script>
+</body>
+</html>

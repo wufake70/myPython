@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关键帧练习</title>
+    <style>
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            clear: both;
+            display: table;
+        }
+        .outer{
+            height: 500px;
+            border-bottom: 10px black solid;
+            margin: 50px auto;
+        }
+        /*.box1{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: drown 3.5s 1s ease-in forwards;
+
+        }*/
+
+        /*小球下落的动画*/
+        /*@keyframes drown {
+            from{  !*start-frame 开始帧*!
+                margin-top: 0;
+            }
+              !*中间过程的关键帧*!
+            !*20%{  !*第一次落地 往上回弹，减速效果*!
+                margin-top: 400px;
+                animation-timing-function: ease-out;
+            }*!
+            40%{ !*回弹到最高点，加速向下*!
+                margin-top: 200px;
+                animation-timing-function: ease-in;
+            }
+            !*60%{ !*再次落地，减速向上回弹*!
+                margin-top: 400px;
+                animation-timing-function: ease-out;
+            }*!
+            80%{  !*再次到最高点， 加速向下*!
+                margin-top: 300px;
+                animation-timing-function: ease-in;
+            }
+
+            !*to{!*end-frame 结束帧*!
+                margin-top: 400px;
+            }*!
+
+            !*去重写法:*!
+            20%,60%,to{  !*第一次落地 往上回弹，减速效果*!
+                margin-top: 400px;
+                animation-timing-function: ease-out;
+            }
+        }*/
+
+
+        @keyframes float {
+            from{
+                margin-top: 0;
+
+            }
+
+            to{
+                margin-top: 400px;
+
+            }
+
+        }
+        /*一排上下浮动的小球*/
+        div>div{
+            float: left;
+        }
+        div .box1{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 1s linear infinite alternate;
+        }
+        div .box2{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 1.5s linear infinite alternate;
+        }
+        div .box3{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 2s linear infinite alternate;
+        }
+        div .box4{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 2.5s linear infinite alternate;
+        }
+        div .box5{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 3s linear infinite alternate;
+        }
+        div .box6{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 3.5s linear infinite alternate;
+        }
+        div .box7{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 4s linear infinite alternate;
+        }
+        div .box8{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 4.5s linear infinite alternate;
+        }
+        div .box9{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cyan;
+
+            animation: float 1.5s 5s linear infinite alternate;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="outer clearfix">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box8"></div>
+    <div class="box9"></div>
+    </div>
+</body>
+</html>

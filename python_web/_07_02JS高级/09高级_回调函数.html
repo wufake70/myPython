@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数</title>
+</head>
+<body>
+<button>点我一下</button>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*1.什么是回调函数
+    * ① 我们自定义的
+    * ② 我们没有调用(浏览器调用的)
+    * ③ 但最终执行了的
+    *
+    * 2.常见的回调函数
+    * ① DOM事件 回调函数
+    * ② 定时器 回调函数
+    *
+    * ③ Ajax请求回调函数
+    * ④生命周期回调函数
+    *
+    *
+    * */
+
+    var btn = $('button')
+    btn.click(function fun1() {
+        alert(this.innerHTML)
+        alert(this)  //返回 调用函数 的当前对象 HTMLButtonElement
+    })
+
+    var timer = setTimeout(function () {
+        alert('到点了')
+        alert(this)
+    },2000)
+
+</script>
+</body>
+</html>

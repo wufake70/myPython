@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作属性</title>
+</head>
+<body>
+<div class="d1" style="width: 200px; height: 200px"></div>
+
+<script>
+    //设置属性 setAttribute，可用于设置非法属性
+    var a = document.getElementsByClassName('d1')[0]
+    a.onmouseenter = function () {
+        a.setAttribute('style', 'background: red; width: 200px; height: 200px')  //设置该标签的属性
+    }
+    //鼠标滑出事件
+    a.onmouseleave = function () {
+        a.setAttribute('style', 'width: 200px; height: 200px; border:5px solid cyan;')
+    }
+
+    //添加合法属性 id、class属性，(无则增，有责改)。自定义属性属于非法属性
+    a.id = 'd1'
+    a.className = 'd1 dddd'
+    // 可以实现js与css 代码分离 (在js代码最好不要写css，可读性不高)
+    /* 通过js的style属性 去修改页面样式css，执行性能较差，**结构和行为的耦合**
+    * 通过js 操作 类属性 达到修改页面的样式，性能高
+    * 实现了**css代码和js代码分离**，维护起来较容易*/
+
+
+    //获取非法属性的值 getAttribute方法
+    //判断是否有某个属性,返回布尔值
+    console.log(a.hasAttribute('id'))
+</script>
+</body>
+</html>

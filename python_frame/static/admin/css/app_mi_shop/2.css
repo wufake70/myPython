@@ -1,0 +1,339 @@
+/*解决高坍，边框重合*/
+        .clearfix::before,
+        .clearfix::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+
+        /*顶部导航条 */
+        .header{
+            width: 100%;
+            height: 42px;
+            background-color: #333;
+        }
+        .header-box{
+            width: 1226px;
+            height: 100%;
+            margin: 0px auto; /*margin水平居中前提设置宽高*/
+            line-height: 40px;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+        .header-l-box>ul>li{
+            float: left;
+
+        }
+        .header-r-box2 ul{
+            float: right;
+        }
+        .header-r-box>ul>li{
+            float: right;
+        }
+        .header a{
+            text-decoration: none;
+            color: #b0b0b0;
+            display: inline-block;  /*将a标签转换为行内块标签，
+                                        使整个li区域都是超链接的生效的范围*/
+        }
+        .header a:hover{
+            color: white;
+        }
+        /*小竖杠*/
+        .header-box span{
+            color: #424242;
+            font-size: 12px;
+            margin: 0px 6px;
+        }
+
+        /*购物车*/
+        .header-r-box2{
+            position: relative;
+        }
+        .header-r-box2 a{
+            width: 120px;
+            height: 41px;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            background-color: #424242;
+            margin-left: 30px;
+            text-align: center;
+        }
+        .header-r-box2 a:hover{
+            display: inline-block;
+            background-color: white;
+            color: #ff6700 !important;
+        }
+        /*下载app的下拉框*/
+        .down-app{
+            display: none; /*隐藏*/
+            width: 124px;
+            height: 148px;
+            background-color: white;
+            box-shadow: 0 1px 5px #aaa;
+            text-align: center;
+            color: black;
+            font-size: 14px;
+            position: absolute;
+            z-index: 1000;
+            left: 750px;
+            line-height: 1;   /*重置行高，这里的字体继承了祖先类的行高*/
+        }
+        .li-down-app:hover .down-app{ /*鼠标划入父元素 子元素现身*/
+            display: block;
+        }
+        .triangle{
+            margin: -7px auto 0px;
+            width: 0px;
+            height: 0px;
+            border-right: 7px solid transparent;
+            border-left: 7px solid transparent;
+            border-bottom: 7px solid white;
+        }
+        .down-app img{
+            width: 90px;
+            height: 90px;
+            display: block;
+            margin: 18px auto 12px;
+        }
+        /*购物车的下拉框*/
+        .buy-car{
+            display: none;
+            width: 316px;
+            height: 100px;
+            background-color: white;
+            box-shadow: 1px 3px 4px grey;
+            position: absolute;   /*父相子绝*/
+            z-index: 10001;
+            right: 0px;
+            text-align: center;
+            line-height: 100px;
+            color: black;
+            font-size: 14px;
+        }
+
+        .header-r-box2 a:hover+div,
+        div.buy-car:hover{
+            color: black;
+            background-color: white;
+            display: block;
+
+        }
+        .header-r-box2:hover a{
+             color: #ff6700 !important;
+            background-color: white;
+            display: block;
+        }
+
+
+
+        /*导航条二*/
+        .header2{
+            width: 100%;
+            height: auto;
+        }
+        .header2-container{
+            width: 1226px;
+            line-height: 100px;
+            margin: 0px auto;
+        }
+        .mi-logo{
+            float: left;
+            position: relative;
+            top: 22px;
+        }
+        .header2-search{
+            float: right;
+        }
+        .header2-nav{
+            float: right;
+            /*margin-right: 167px;*/
+            margin-right: 68px;
+        }
+        .header2-nav li{
+            float: left;
+
+        }
+        .header2-nav li:hover a{
+            color: #ff6700 !important;
+        }
+        .header2-nav a{
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            padding: 0px 10px;
+        }
+
+        .header2-search{
+            width: 296px;
+            height: 50px;
+            border: 1px solid #E0E0E0;
+            line-height: 1;
+            margin: 22px -1px 0px 0px;
+        }
+        .header2-search input{
+            border: none;
+            width: 226px;
+            height: 48px;
+            margin: 0px 0px 0px 10px;
+            position: relative;
+            top: -5px;
+            background-color: transparent;
+        }
+        .header2-search input:focus{
+            border: none !important;
+        }
+        .header2-search button{
+            display: inline-block;
+            width: 51px;
+            height: 51px;
+            /*position: absolute;
+            top: 63px;
+            left: 1331px;*/
+            /*margin-right: 0px;*/
+            position: relative;
+            top: 0px;
+            right: -1px;
+            border: 1px solid #E0E0E0;
+            background-color: white;
+        }
+        .header2-search button:hover,
+        .header2-search button:hover i{
+            background-color: #ff6700;
+            color: white !important;
+        }
+        .icon-sousuoanniu{
+            font-size: 24px;
+            color: #616161;
+        }
+
+        /*header2的下拉框*/
+        .header2 .box{
+            display: none;
+            border-top: 1px solid #e0e0e0;
+            position: absolute;
+            z-index: 10001;
+            left: 0px;
+            width: 100%;
+            height: 230px;
+            background-color: white;
+            box-shadow: 0px 3px 4px rgba(0,0,0, .18);
+        }
+        .header2-nav li:hover div{
+            display: block;
+        }
+
+        /*主体内容*/
+        /*第一个盒子*/
+        .content-box1{
+            width: 1226px;
+            height: 670px;
+            margin: 0px auto;
+            background-color: white;
+        }
+        .content-box1 div{
+            float: left;
+        }
+        /*导航条*/
+        .content-box1-nav{
+            position: absolute;
+            width: 234px;
+            height: 460px;
+            background-color: rgba(105,101,101,.4);
+            position: absolute;
+            z-index: 10000;
+        }
+        .content-box1-nav ul{
+            padding: 20px 0px;
+            /*position: absolute;
+            z-index: 10000;*/
+        }
+        .content-box1-nav li{
+
+        }
+        .content-box1-nav a{
+            position: relative;
+            display: block;
+            line-height: 42px;
+            padding: 0px 0px 0px 30px;
+            text-decoration: none;
+            color: white;
+        }
+        /*.content-box1-nav a:hover{
+            background-color: #ff6700;
+        }*/
+        .content-box1-nav a i{
+            position: absolute;
+            z-index: 10000;
+            right: 12px;
+            font-size: 27px;
+        }
+        /*该导航条的左拉框2*/
+        .content-box1-nav-box{
+            display: none;
+            position: absolute;
+            z-index: 10001;
+            top: 0px;
+            left: 234px;    /* 注意:导航条与下拉框之间不要留缝隙，否则无法触发划入效果*/
+            width: 992px;
+            height: 458px;
+            background-color: white;
+            box-shadow: 2px 2px 4px rgba(105,101,101, .5);
+        }
+        .content-box1-nav li:hover a{
+            background-color: #ff6700;
+            /*display: block;*/
+        }
+        .content-box1-nav li:hover div{
+            display: block;
+        }
+
+        /*轮播图*/
+        .content-box1-img img {
+            position: absolute;
+            z-index: 0;
+            width: 1226px;
+            height: 460px;
+            background-color: transparent;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

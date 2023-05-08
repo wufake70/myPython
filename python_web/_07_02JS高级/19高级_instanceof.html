@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>instanceof</title>
+</head>
+<body>
+<script>
+  /*1.instanceof 是如何判断的？
+  * 表达式: A(实例对象) instanceof B(构造函数对象)
+  * 如果B函数 的显示原型对象 在 A对象的(隐式)原型链上，返回true,否则返回false
+  *
+  *2.Function 是通过new 自己产生的实例。
+  *
+  *
+  *
+  * */
+
+  function Fun() {
+
+  }
+
+  var f1 = new Fun()
+  console.log(f1 instanceof Fun)    //返回true
+  console.log(f1 instanceof Object) //返回true
+
+  //难点
+  //返回true 因为 var Object = Function
+  console.log(Object instanceof Function)
+  //返回true 因为 Object的原型 是所有原型链的终点
+  console.log(Object instanceof Object)
+
+</script>
+</body>
+</html>

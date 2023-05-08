@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+<a href="./11_DOM.html">当前文件夹的DOM页面</a>
+<button>点我一下</button>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * History
+    *   浏览器历史记录
+    *
+    *   length
+    *       属性，可以看到当前访问的链接数量
+    *
+    *   back()
+    *       回退到上一个页面(前提已经浏览过)
+    *   forward()
+    *       跳到下一个页面(前提已经有浏览过，有历史记录)
+    *
+    *   go() 只能填入整数(负号表示退后，证号表示前进)
+    *       跳转到执行的页面
+    * */
+    var btn = $('button')
+
+    btn.click(function () {
+        /*alert(history.length)*/
+        /*history.back()*/
+        history.forward()
+    })
+
+</script>
+</body>
+</html>

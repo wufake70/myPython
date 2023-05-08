@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听器</title>
+</head>
+<body>
+<button id="btn1">
+    点我一下
+</button>
+<button id="btn2" onclick="func2()">
+    点我一下
+</button>
+
+<script src="jQuery/jQuery.js"> </script>
+<script>
+     let btn1 = document.querySelector('#btn1'),
+        btn2 = document.querySelector('#btn2'),
+         all = document.querySelectorAll('*')   //获取全部元素
+
+    function func1() {
+        alert('我是button1')
+    }
+    function func2() {
+        alert('我是button2')
+    }
+
+    // 添加事件 监听器
+    //btn1.addEventListener('click',func1)  // js方法
+     all[0].addEventListener('click',func1)  // js 只能操作一个元素
+    //移除事件监听器
+     all[0].removeEventListener('click',func1)
+
+     //$('*').eq(0).unbind('click', func1)  //无法解除 js添加的事件监听器
+
+     //添加匿名函数监听器； 因为没有名字， 很难移除该监听器，
+     btn1.addEventListener('click',function () {
+         alert('我使用的匿名函数监听器')
+     })     //
+
+
+
+
+</script>
+</body>
+</html>

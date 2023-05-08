@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>钟表</title>
+    <style>
+        .clearfix::before,
+        .clearfix::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /*表盘容器样式*/
+        .clock-contain{
+            width: 600px;
+            height: 600px;
+            /*background-color: #0077aa;*/
+
+            background: url("{% static 'admin/img/app_clock/表盘.png' %}");
+            background-size: cover;  /*把整个背景图片铺满*/
+
+            margin: 100px auto;
+            border-radius: 50%;
+            position: relative;
+        }
+
+
+        /*时针样式*/
+        .hour-header{  /*时针针头*/
+            width: 0px;
+            height: 0px;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 30px solid black;
+            margin: auto;
+        }
+        .hour{
+            width: 8px;
+            height: 170px;
+            background-color: black;
+            margin: auto;
+
+        }
+        .hour-box{   /*时针旋转转盘*/
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: transparent;
+            margin: 100px;
+            animation: run-circle 43200s steps(43200)  infinite;
+        }
+
+
+        /*分针样式*/
+        .minute-header{  /*分针针头*/
+            width: 0px;
+            height: 0px;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid black;
+            margin: auto;
+        }
+        .minute{
+            width: 6px;
+            height: 195px;
+            background-color: black;
+            margin: auto;
+
+        }
+        .minute-box{   /*分针旋转转盘*/
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background-color: transparent;
+            margin: 75px;
+            animation: run-circle 3600s steps(3600)  infinite;
+        }
+
+
+
+        /*秒针样式*/
+        .sec-header{  /*针头*/
+            width: 0px;
+            height: 0px;
+            margin: auto;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 25px solid black;
+        }
+        .sec{
+            width: 4px;
+            height: 225px;
+            background-color: black;
+            margin: 0px auto;
+        }
+        /*设置秒针旋转效果*/
+        .sec-box{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: transparent;
+            margin: 50px;
+            animation: run-circle 60s steps(60)  infinite;
+        }
+
+        /*转圈动画的关键帧*/
+        @keyframes run-circle {
+            from{
+                transform: rotateZ(0);
+            }
+
+            to{
+                transform: rotateZ(1turn);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-contain clearfix">
+
+        <div class="hour-box">
+            <div class="hour-header"></div>
+            <div class="hour"></div>
+        </div>
+
+        <div class="minute-box">
+            <div class="minute-header"></div>
+            <div class="minute"></div>
+        </div>
+
+        <div class="sec-box">
+            <div class="sec-header"></div>
+            <div class="sec ">
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

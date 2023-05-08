@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格仿写</title>
+    <style>
+        body{
+            background-color: #FFFFFF;
+        }
+        table{
+            width: 1368px;
+            margin: 50px auto;
+            text-align: left;
+
+            /*默认情况下 border-collapse: separate; 无法给tr 设置边框*/
+            border-collapse: collapse;
+            /*border-spacing: 1px;*/
+        }
+
+        /*表格行*/
+        tr{
+            border-bottom: 3px solid #a6aaaf;
+
+        }
+
+
+        /*伪类选择器，选择第n个子元素*/
+        tr:nth-child(1),
+        tr:nth-child(2n){
+            background-color: #dbe0e5;
+        }
+
+        /*第一个tr的兄弟tr标签 都设置伪类(划入)*/
+        tr+tr:hover{
+            cursor: pointer;
+            background-color: #D3D3D3;
+            font-weight: bold; /***这里设置了字体加粗，将对布局有影响，
+                                 因为加粗后内容变宽，会撑大盒子，
+                                 导致水平方向有 微小位移效果*/
+        }
+        /*解决上列问题方法:*/
+        tr+tr:hover td{
+            padding: 10px 8px;   /*减小撑大盒子的效果，将水平内边距变小
+                                    随之而来问题是，图片也会受到 字体增粗的影响*/
+        }
+        tr+tr:hover img{
+            padding: 0px 2px;  /*解决方法同上，调整水平内边距，达到合适效果*/
+        }
+
+
+        /*单元格*/
+        td{
+            /*padding: 10px 10px;*/ /*****/
+            padding: 10px 10px;
+        }
+        /*图片开启相对定位*/
+        img{
+            position: relative;
+            top: 3px;
+        }
+        /*图片后面的文字 开启相对定位*/
+        span{
+            position: relative;
+            left: 70px;
+            top: -7px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<table>
+
+    <tr>
+        <td>Aug 2022</td>
+        <td>Aug 2021</td>
+        <td>Programming Language</td>
+        <td>Ratings</td>
+        <td>Change</td>
+    </tr>
+
+        <tr>
+        <td>1</td>
+        <td>2</td>
+        <td><img src="./picture/Python.png" alt=""> <span>Python</span></td>
+        <td>15.42%</td>
+        <td>+3.56%</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>1</td>
+        <td><img src="./picture/C.png" alt=""> <span>C</span></td>
+        <td>14.59%</td>
+        <td>+2.03%</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>3</td>
+        <td><img src="./picture/Java.png" alt=""><span>Java</span></td>
+        <td>12.40%</td>
+        <td>+1.96%</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>4</td>
+        <td><img src="./picture/C__.png" alt=""><span>C++</span></td>
+        <td>10.17%</td>
+        <td>+2.81%</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>5</td>
+        <td><img src="./picture/C__.png" alt=""><span>C#</span></td>
+        <td>5.59%</td>
+        <td>+0.45%</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>6</td>
+        <td><img src="./picture/Visual_Basic.png" alt=""><span>Visual Basic</span></td>
+        <td>4.99%</td>
+        <td>+0.33%</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>7</td>
+        <td><img src="./picture/JavaScript.png" alt=""><span>JavaScript</span></td>
+        <td>2.33%</td>
+        <td>-0.61%</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>9</td>
+        <td><img src="./picture/Assembly_language.png" alt=""><span>Assembly lang</span></td>
+        <td>2.17%</td>
+        <td>+0.14%</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>10</td>
+        <td><img src="./picture/SQL.png" alt=""><span>SQL</span></td>
+        <td>1.70%</td>
+        <td>+0.23%</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>8</td>
+        <td><img src="./picture/PHP.png" alt=""><span>PHP</span></td>
+        <td>1.39%</td>
+        <td>-0.80</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>16</td>
+        <td><img src="./picture/Swift.png" alt=""><span>Swift</span></td>
+        <td>1.27%</td>
+        <td>+0.30%</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>12</td>
+        <td><img src="./picture/Classic_Visual_Basic.png" alt=""><span>Classic Visual Basic</span></td>
+        <td>1.27%</td>
+        <td>+0.04%</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>22</td>
+        <td><img src="./picture/Delphi_Object_Pascal.png" alt=""><span>Delphi/Object</span></td>
+        <td>1.22%</td>
+        <td>+0.60%</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>23</td>
+        <td><img src="./picture/Objective_C.png" alt=""><span>Objective-C</span></td>
+        <td>1.22%</td>
+        <td>+0.61%</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>18</td>
+        <td><img src="./picture/Go.png" alt=""><span>Go</span></td>
+        <td>0.98%</td>
+        <td>+0.08%</td>
+
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>14</td>
+        <td><img src="./picture/R.png" alt=""><span>R</span></td>
+        <td>0.92%</td>
+        <td>-0.13%</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>17</td>
+        <td><img src="./picture/MATLAB.png" alt=""><span>MATLAB</span></td>
+        <td>0.90%</td>
+        <td>-0.08%</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>15</td>
+        <td><img src="./picture/Ruby.png" alt=""><span>Ruby</span></td>
+        <td>0.82%</td>
+        <td>-0.18%</td>
+
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>13</td>
+        <td><img src="./picture/Fortran.png" alt=""><span>Fortran</span></td>
+        <td>0.81%</td>
+        <td>-0.32%</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>20</td>
+        <td><img src="./picture/Perl.png" alt=""><span>Pert</span></td>
+        <td>0.72%</td>
+        <td>-0.06%</td>
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+</body>
+</html>

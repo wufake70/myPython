@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转</title>
+    <style>
+        body{
+            border: 1px solid black;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+            margin: 100px auto;
+            /*transform: rotateZ(45deg);*/ /*绕Z轴旋转 45度*/
+            /*transform: rotateZ(0.125turn);*/ /*绕Z轴旋转 8分之一全*/
+
+            transition: 2s;  /*给元素 集中设置 过度时间，
+                                鼠标移入移出 该过渡效果都会生效，
+                                如果只在移入时设置，那么移出时没有效果*/
+        }
+
+        html,body{
+            perspective: 800px;
+        }
+
+        body:hover .box{
+            /*transform: rotateZ(0.125turn);*/
+            /*transition: 2s*/;  /*设置旋转的时间，过度时间必须要设置有 两不同属性值，单独一个没有任何过渡效果*/
+
+            /*绕着X轴 旋转90度*/
+            transform: rotateX(180deg); /*父级元素开启视距 效果更好*/
+
+            /*绕着Y轴 旋转90度 同上*/
+        }
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

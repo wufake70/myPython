@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>为类选择器</title>
+    <style>
+        /*为类选择器
+            伪类: 用于一些特殊的展示效果，
+            如超链接未点击，是一个样子
+            点击时 是一个样子，
+            点击后 又是一个样子
+            注意: 不能与层次选择器结合使用*/
+        /*#a1:link{     !*设置 未访问状态*!
+            color: red;
+        }
+
+        #a1:visited{  !* 设置访问过后的状态*!
+            color: blue;
+        }
+
+        #a1:hover{  !*设置 鼠标划入的状态*!
+            color: green;
+        }
+
+        #a1:active{        !*点击 未松开*!
+            color: aquamarine;
+        }*/
+        /*以上设置伪类 顺序不能打乱，否则无效*/
+
+        /*伪类选择器，可以选择第n个子元素*/
+        a:nth-child(odd){ /*选择奇数位置的a元素*/
+            color: blue;
+        }
+
+        /*划入前后的 border不一样大所造成的 布局影响*/
+        a{
+            border: 20px solid red;
+            display: block;
+        }
+        a:hover{
+            color: pink;
+            /*height: 100px;
+            width: 100px;*/
+            display: block;
+            border: 21px solid green;  /*border比原来的稍大，会有一些撑开效果*/
+        }
+
+        </style>
+</head>
+<body>
+<a id="a1" href="#">我是超链接1</a> <br>
+<a name='a2' href="#">我是超链接2</a> <br>
+<a class='a3' href="#">我是超链接3</a> <br>
+<a href="#">我是超链接4</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

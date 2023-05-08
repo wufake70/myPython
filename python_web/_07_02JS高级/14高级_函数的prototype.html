@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的prototype</title>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * 函数的prototype 原型
+    *   每个函数都有一个prototype属性，他(的值)默认指向一个Object 对象(即 原型对象)
+    *   原型对象中有一个属性 constructor，它指向函数对象
+    *
+    * 给原型对象添加属性(一般都是方法)
+    *   作用: (构造)函数的所有实例对象 自动拥有原型中的属性
+    *   (类似 Python中 给 类添加 方法，而 由类实例化的对象 都可以使用该方法)
+    *
+    * */
+    console.log(Date.prototype)              //Object
+    console.log(Date.prototype.constructor) //Date()
+
+    function Fun() {
+        alert('9999')
+    }
+    console.log(Fun.prototype)    //默认指向一个空原型对象(没有我们添加属性)
+    /*Fun.prototype.constructor()*/
+
+    //给原型对象添加属性 ===>实例对象可以访问
+    var p = new Fun()
+    Fun.prototype.say_hi = function () {  //给Fun的原型对象添加 方法
+        alert('hello world')
+    }
+    //返回 实例对象p 的构造函数
+    console.log(p.constructor)
+    p.say_hi()  //由Fun构造函数 实例化的p对象，也拥有了该方法
+
+
+</script>
+</body>
+</html>

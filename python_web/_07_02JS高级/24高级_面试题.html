@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题</title>
+</head>
+<body>
+<script>
+    /*
+    * 试题一
+    * 1.下列代码依次输出什么？
+    * undefined 1 2 3 3 2 1 1
+    *
+    * 2.整个过程中产生了几个 执行上下文？
+    * 5个
+    * */
+    console.log('global begin:' + i)
+    var i = 1
+    foo(1)
+    function foo(i) {  // 递归函数
+        if (i === 4) {
+            return
+        }
+        console.log('foo() begin:' + i)
+        foo(i + 1)
+        console.log('foo() end:' + i)
+    }
+    console.log('global end:' + i)
+
+    /*
+    * 试题二, 先使var 关键字的变量提升，在使 函数声明方式 创建 的 函数提升
+    * 然后 函数名a 覆盖了 变量 a
+    * */
+    function a () {}
+    var a
+    console.log(typeof a)  // function
+
+    /*
+    * 试题三
+    * 块级作用域里面，var 关键字声明的变量 在 全局执行上下文的时候，也会声明提前
+    * */
+    if (!(b in window)) { //true 取反为 false
+        var b = 1   //声明提前，确定全局执行上下文对象 window对象，将b 添加为window的属性
+    }
+    console.log(b)  //声明提前但没有赋值 返回undefined
+
+    /*
+    * *****试题四******
+    * var 关键字 声明变量 先提升，函数声明 函数后提升，
+    * 因为 函数名和变量名 相同，函数声明 覆盖了 变量声明，
+    * 
+    * */
+    var c = 9999    // 最后开始 执行代码，c函数名 赋值 为9999，此时c 已经不是函数了
+    function c() {
+        console.log(c)
+        var c = 2 // 函数 没有调用(函数内的代码 不会执行)，就没有 函数执行上下文，
+    }
+    c(2)  // c is not a function
+
+
+</script>
+</body>
+</html>

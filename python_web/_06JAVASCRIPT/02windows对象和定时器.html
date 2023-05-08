@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>win对象</title>
+</head>
+<body>
+<script>
+    //定时器
+    //1.timeout、setTimeout(func(){}, 毫秒)函数 里写执行(匿名)函数
+    // 在指定的时间后打印，只执行一次
+    var time1 = setTimeout(function () {
+        var now_seconds = new Date().getSeconds()
+        document.writeln('现在'+now_seconds+'秒' + '<br>')
+    },2000)
+    //清除定时器
+    clearTimeout(time1)
+
+    //2.setInterval(func(){}, 毫秒),循环设置的时间 执行
+    var time2 = setInterval(function () {
+        var now_seconds = new Date().getSeconds()
+        document.writeln('现在'+now_seconds+'秒' + '<br>')
+    },2000)
+
+    //清除定时器
+    clearInterval(time2)
+
+    //windows的使用，
+    var win = window.open()    //打开一个新空白窗口
+    /*w
+    w.close()*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

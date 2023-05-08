@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+  //试题1
+  function A() {
+
+  }
+  //给A的原型 添加属性 n
+  A.prototype.n = 1
+  //实例化A 的对象 b
+  var b = new A()
+  //将A的原型属性 指向 另一个对象
+  A.prototype = {
+      n: 2,
+      m: 3
+  }
+  //实例化A的 对象c
+  var c = new A()
+
+  console.log(b.n, b.m, c.n, c.m)  // 1 undefined 2 3
+  //A的 prototype属性 指向一个新的对象，
+  //但是并不影响 实例对象 b的__proto__属性 指向原来的原型对象
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<script src="./jQuery/jQuery.js"></script>
+<script>
+
+    //遍历元素值
+    // jq可以一次性给多个元素设置事件(在不加下标)，js不行 只能一个一个的.....
+    // each 遍历
+
+    /*$('li').each(function () {
+        alert($(this).text())
+    })*/
+
+    // 一次性设置点击事件
+    /*$('li').click(function () {
+        alert($(this).text())
+    })*/
+
+    // val()函数              //js中 value属性 对应 jq中的 val()方法
+    //$('li').val('99')     // 给所有获取到的元素 都添加 value属性，并且值为 '999'
+    //$("li").val()         // 默认获取第一个 ，括号里可以加下标
+
+
+</script>
+</body>
+</html>

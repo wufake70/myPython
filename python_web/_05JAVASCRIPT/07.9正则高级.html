@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则高级</title>
+</head>
+<body>
+
+<script>
+    // 1.'对错X√》》》》》》》》》' 提取出 上列 的'对'
+    var a = '对错X√》》》》》》》》》'
+    console.log(a.replaceAll(/([对错√X]).*/g, '$1'))
+    // 注意:
+    //      1.使用正则 的圆括号分组时，括号 最好 要有 一定的规则(如: (....).*)，否则 $1 无法使用。
+
+    // 2.提取出 上列的 '对'，'√'
+    console.log(a.replaceAll(/(对).*(√).*/g, '第一组: $1;  第二组：$2'))
+    //      2.可以使用 $1~$9 获取分组后 所捕获得参数，但要注意 每一组的位置关系(谁前谁后) ，否则无法匹配
+
+    // 3.将上列的 '错'，'√'，替换成 0
+    console.log(a.replaceAll(/(错)|(√)/g, '0'))
+
+
+</script>
+</body>
+</html>

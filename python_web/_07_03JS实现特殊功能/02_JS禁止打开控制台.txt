@@ -1,0 +1,91 @@
+
+
+一、利用debugger的特性，无限递归
+
+这个方法不能监测控制台被打开，但是能达到不让别人浏览你代码的目的。
+
+
+    debugger 语句调用任何可用的调试功能，可以阻断代码执行，如果没有调试功能可用，则此语句不起作用。
+
+另外：每个浏览器都有其最大调用栈，如果超出就会抛出Maximum call stack size exceeded的错误并终止程序。
+
+利用上面讲的特性组合成下面的代码：
+
+function check() {
+    function doCheck(a) {
+        (function() {}["constructor"]("debugger")()); //debugger
+        doCheck(++a);
+    }
+    try {
+        doCheck(0)
+    } catch(err) {
+        console.log(err)
+    }
+};
+
+    
+
+上面代码check运行时，如果控制台未开启，debugger 不会起作用，
+但是doCheck会不断循环，直至爆栈，抛出错误，中止本次check运行；
+如果控制台开启，则会不断的进行断点调试和循环doCheck的调用，
+直至爆栈；如果控制台开启，但是取消了debugger调式，
+虽然此时debugger 不会起作用，但递归是依然存在的，
+而且此时网页性能与未开启控制台相比会大幅度下降，严重的话，可能会卡死浏览器。
+
+未开启控制台时代码运行时间：
+Chrome：30-50ms
+Firefox：200-400ms
+Ie：10-30ms
+
+开启控制台但取消debugger时代码运行时间：
+Chrome：1000-2000ms
+Firefox：页面直接卡死
+
+    
+
+从上面的测试结果来看，我们可以设置一个间隔2000ms的定时器来不断执行check，
+这样当控制台开启时，不论是否取消debugger调式，都会使页面卡住。
+另外我们还可以对代码进行混淆，增加 阅读困难度，我们还可以利用 闭包完成上面操作，
+防止别人在控制台重置check：check=function(){}。
+
+!function(){
+
+    // 用于后面的字符串拼接
+	var _0x1cbb = ["tor", "struc", "call", "ger", "con", "bug", "de", "apply"];
+
+    // 轮询 开发者模式 是否打开
+	setInterval(check, 2e3);
+
+	function check() {
+		function doCheck(_0x1834ff) {
+			if (('' + _0x1834ff / _0x1834ff)['length'] !== 0x1 || _0x1834ff % 0x14 === 0x0) {
+	            (function() {return !![]}[
+	            	_0x1cbb[0x4] + _0x1cbb[0x1] + _0x1cbb[0x0]
+	            ](
+	            	_0x1cbb[0x6] + _0x1cbb[0x5] + _0x1cbb[0x3]
+	            )[_0x1cbb[0x2]]());
+	        } else {
+	        	(function() {return ![]}[
+	            	_0x1cbb[0x4] + _0x1cbb[0x1] + _0x1cbb[0x0]
+	            ](
+	            	_0x1cbb[0x6] + _0x1cbb[0x5] + _0x1cbb[0x3]
+	            )[_0x1cbb[0x7]]());
+	        }
+
+            // 递归
+			doCheck(++_0x1834ff);
+		}
+        
+		try {
+			doCheck(0)
+		} catch(err) { }
+	};
+}();
+
+    
+
+**优点：**兼容性比较好，不易破-解
+**缺点：**会影像浏览器性能，造成页面卡顿
+**破-解：**想办法重置check函数
+
+

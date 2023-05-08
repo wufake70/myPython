@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        .box1{
+            width: 700px;
+            height: 700px;
+            background-color: grey;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /*要对当前元素生效的关键帧的名字*/
+            animation-name: test;
+            /*动画执行的时间*/
+            animation-duration: 4s;
+            /*animation-delay 延迟效果*/
+            /*animation-timing-function 时序函数*/
+            animation-iteration-count: 2; /*动画执行次数，infinite无限次*/
+
+            /*animation-direction: alternate-reverse;*/ /*动画运行的方向，
+                                            alternate-reverse 反方运动(t到f)，有返回效果
+                                            reverse表示颠倒， to 到 fr
+                                            alternate 有返回效果*/
+            /*动画的填充模式*/
+            /*none 回到原来位置*/
+            /*forwards 动画结束在最后关键帧*/
+            /*backwards 动画延迟等待时，元素就会处于开始位置*/
+            animation-fill-mode: backwards;
+
+            /*符合样式*/
+            /*持续时间 要在延迟时间之前 */
+        }
+        .box1:hover div{
+            animation-play-state: paused;  /*动画暂停*/
+        }
+
+        /*动画: 和过渡效果类似，都可以实现一些动态的的效果*/
+            /*不同的是过渡需要在某个属性发生变化时才会触发*/
+            /*动画可以实现自动处罚的动态效果*/
+
+        /*设置动画，必须先要设置一个关键帧，
+          关键帧设置了动画执行每一个步骤*/
+        /*设置关键帧*/
+        @keyframes test{
+            /*to 表示动画的开始位置*/
+            from{
+                margin-left: 0%;
+            }
+
+            /*to 表示动画的结束位置*/
+            to{
+                margin-left: 100%;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+
+</div>
+
+</body>
+</html>

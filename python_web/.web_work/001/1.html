@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网店首页</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        #header{
+            position: fixed;
+            z-index: 20;  /*设置层级优先*/
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        /*#header>ul::after{
+            display: block;
+            clear: both;
+            content: "";
+        }*/
+
+
+        .s1{
+            position: relative;
+            top: 9px;
+            font-size: 40px;
+        }
+
+
+        .ul1{  /*无序列表整体设置*/
+            text-align: center;
+            position: relative;
+            left: 240px;
+            top: -18px;
+        }
+        .ul1>li{  /*每一天列表样式设置*/
+            display: list-item;
+            float: left;   /*使列表从左到右 排列*/
+            left: 200px;
+            top: 20px;
+            margin: 0px 20px;  /* 设置列表的 左右外边距*/
+        }
+        .ul1>li>a{   /*重改超链接样式*/
+            text-decoration: none;   /*去出 下划线*/
+            color:  grey;
+        }
+
+        /*搜索框、输入框*/
+        .search{
+            width: 350px;
+            height: 34px;
+            position: absolute;
+            top: -14px;
+            left: 500px;
+            margin: 2px 0px 0px;
+            border: 2px solid #FF5000;
+            border-radius: 17px;        /*border-radius: 17px 17px 17px 17px;  左右半圆，radius 是height 的一半  */
+        }
+        .search-input{
+
+            width: 288px;
+            height: 30px;
+            position: absolute;
+            top: 0px;
+            left: -1px;
+            opacity: 50%;
+            border-radius: 15px 0px 0px 15px;
+        }
+
+
+        #content{
+            margin-top: 60px;
+            /*width: 1150px;*/
+            /*height: 1308px;*/  /*1308*/
+            background-color: chartreuse;
+            /*position: relative;
+            top: 60px;*/
+        }
+
+        #content-left{
+
+            width: 700px;
+            /*height: 1000px;*/
+            background-color: cyan;
+            position: relative;
+            /*top: 60px;*/
+            left: 205px;
+            /*left: 0px;*/
+        }
+        #content-left::after{   /**/
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+
+        /*轮播图设置*/
+        /*按钮样式*/
+        .pic-btn-left{
+            width: 30px;
+            height: 30px;
+            font-size: 24px;
+            color: grey;
+            opacity: 50%;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            top: 185px;
+            left: 0px;
+        }
+        .pic-btn-right{
+            width: 30px;
+            height: 30px;
+            font-size: 24px;
+            color: grey;
+            opacity: 50%;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            top: 185px;
+            left: 668px;
+        }
+        /*小圆点*/
+        .dots{
+            position: absolute;
+            z-index: 2;
+        }
+        .dots span{     /*span行内元素不能直接设置 宽高，必须转为块级元素*/
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid grey;
+            border-radius: 50%;
+            margin: 9px;
+            position: relative;
+            top: 340px;
+            left: 250px;
+        }
+        /*高亮小圆点*/
+        .dot-show{ !important;
+            /*border: 1px solid white;*/
+            background-color: blue;
+            opacity: 66%;
+        }
+        .Rotation-pic-list>li>a>img{
+            width: 100%;  /*设置图片大小 通过百分比形式*/
+            position: absolute;
+            z-index: 0;
+        }
+        .Rotation-pic-list{
+            height: 391px;
+        }
+        /*图片层级优先*/
+        .pic-show{
+            width: 100%;  /*设置图片大小 通过百分比形式*/
+            position: absolute;
+            z-index: 1;
+        }
+
+        /*盒子2*/
+        .d2{
+
+            background-color: gold;
+            /*position: relative;
+            top: 410px;*/
+            margin-top: 15px;
+        }
+        .d2>ul:after{   /**/
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .d2>ul>li{
+            /*display: inline-block;*/
+            float: left;
+            margin: 16px;
+            text-align: center;
+        }
+        .d2 ul li img{
+            width: 200px;
+            height: 200px;
+            /*width: 40%;*/  /*当设置了float， 就不适用百分比*/
+        }
+        .d2 ul li img:hover{
+            transform: scale(1.2);  /*鼠标移入 图片尺寸变大*/
+            transition: 2s;     /*过度的时间*/
+        }
+        .money1{
+            font-size: 20px;
+            color: red;
+        }
+
+        /*盒子3*/
+        .d3{
+            /*position: relative;
+            top: 462px;*/
+            margin-top: 15px;
+        }
+        .d3 a{   /*重改超链接样式*/
+            text-decoration: none;   /*去出 下划线*/
+            color:  red;
+            font-size: 25px;
+            font-weight: bold;
+            float: left;
+            margin: 10px 0px 0px 30px;
+        }
+        .d3::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /*盒子4*/
+        .d4{
+            width: 100%;
+            height: 470px;
+            /*position: relative;
+            top: 520px;*/
+            margin-top: 15px;
+            background-color: white;
+            /*overflow: hidden;  盒子内的内容过多时，hidden 表示隐藏，scroll 表示 可滑动浏览*/
+        }
+        .d4>ul:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .d4>ul>li{
+            float: left;
+            margin: 0px;
+            border: 1px solid grey;
+            width: 150px;
+            height: 200px;
+            margin: 10px;
+            text-align: center;
+        }
+        .d4>ul>li:hover{
+            transform: scale(1.1);
+            transition: 1s;
+        }
+        .d4>ul>li>a>img{
+            width: 150px;
+            height: 150px;
+        }
+
+        /*页面底部内容*/
+        #footer{
+            margin-top: 15px;
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            text-align: center;
+        }
+        .footer-box1 a{
+            text-decoration: none;   /*去出 下划线*/
+            color:  grey;
+        }
+
+
+
+    </style>
+</head>
+
+<body style="background-color: pink">
+<div id="header">
+    <span class="s1">淘宝店铺</span>
+    <ul class="ul1">
+        <li>
+            <a href="#"><span>首页</span></a>
+        </li>
+
+        <li>
+            <a href="#"><span>购物车</span></a>
+        </li>
+        <li>
+            <a href="#"><span>我的收藏</span></a>
+        </li>
+        <li>
+            <a href="#"><span>我的设置</span></a>
+        </li>
+        <li>
+             <a href="#"><span>联系客服</span></a>
+        </li>
+        <li>
+            <div class="search"><input class="search-input" type="text">
+                 <button type="submit" style="position: relative; left: 147px; border-radius: 0px 15px 15px 0px;background-color: #FF5000; border:none;">
+                     <span style="font-size: 24px;">搜索</span>
+                 </button>
+            </div>
+        </li>
+        <li style="margin-left: 660px">
+            <a href="#"></a></span><span>注册/登录</span></a>
+        </li>
+
+    </ul>
+</div>
+<div id="content">
+    <div id="content-left">
+        <div class="Rotation-pic">
+            <button class="pic-btn-left">
+                <span><</span>
+            </button>
+            <button class="pic-btn-right">
+                <span>></span>
+            </button>
+            <div class="dots">
+                <span id="dot1" class="dot-show"></span>
+                <span id="dot2"></span>
+                <span id="dot3"></span>
+                <span id="dot4"></span>
+                <span id="dot5"></span>
+            </div>
+            <ul class="Rotation-pic-list">
+                <li class="pic-show"><a href=""> <img src="./picture/001.jpg" alt=""></a></li>
+                <li><a href=""> <img src="./picture/002.jpg" alt=""></a></li>
+                <li><a href=""> <img src="./picture/003.jpg" alt=""></a></li>
+                <li><a href=""> <img src="./picture/004.jpg" alt=""></a></li>
+                <li><a href=""> <img src="./picture/005.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="d2">
+            <ul>
+                <li><a href=""><img src="./picture/006.webp" alt=""></a> <br>
+                    <span class="money1">￥9.9</span><span>供养机</span>
+                </li>
+                <li><a href=""><img src="./picture/007.webp" alt=""></a> <br>
+                    <span class="money1">￥9.9</span><span>包包</span>
+                </li>
+                <li><a href=""><img src="./picture/008.webp" alt=""></a> <br>
+                    <span class="money1">￥9.9</span><span>照相机</span>
+                </li>
+            </ul>
+
+        </div>
+        <div class="d3">
+            <ul>
+                <li><a href=""> <span>潮流衣服</span></a></li>
+                <li><a href=""> <span>今日特价</span></a></li>
+                <li><a href=""> <span>为你推荐</span></a></li>
+                <li><a href=""> <span>淘宝生鲜</span></a></li>
+                <li><a href=""> <span>我的购物车</span></a></li>
+
+            </ul>
+        </div>
+        <div class="d4">
+            <ul>
+                <li><a href=""><img src="./picture/009.webp" alt=""></a>
+                    <p>AJ男鞋</p>
+                </li>
+                <li><a href=""><img src="./picture/010.webp" alt=""></a>
+                    <p>蓝牙耳机</p>
+                </li>
+                <li><a href=""><img src="./picture/011.webp" alt=""></a>
+                    <p>书籍</p>
+                </li>
+                <li><a href=""><img src="./picture/012.webp" alt=""></a>
+                    <p>包包</p>
+                </li>
+                <li><a href=""><img src="./picture/013.webp" alt=""></a>
+                    <p>夹子</p>
+                </li>
+                <li><a href=""><img src="./picture/014.webp" alt=""></a>
+                    <p>箱子</p>
+                </li>
+                <li><a href=""><img src="./picture/015.webp" alt=""></a>
+                    <p>服装</p>
+                </li>
+                <li><a href=""><img src="./picture/016.webp" alt=""></a>
+                    <p>洗面奶</p>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <div id="content-right"></div>
+
+</div>
+
+
+<div id="footer">
+    <div class="footer-box1 ">
+        您是不是在找:
+        <a href=""> <span>小米手机 | </span></a>
+        <a href=""> <span>笔记本 | </span></a>
+        <a href=""> <span>男鞋 | </span></a>
+        <a href=""> <span>化妆品 | </span></a>
+        <a href=""> <span>新款口红 | </span></a>
+    </div><br>
+    <span>Taobao.com版权所有 2003-现在 增值电信业务经营许可证：浙B2-20070195</span> <br> <br>
+    <span>浙公网安备 33010002000075号</span>
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    let pic_list = $('.Rotation-pic-list li'),
+        dot_list = $('.dots>span'),
+        btn_left = $('.pic-btn-left'),
+        btn_right = $('.pic-btn-right')
+
+    //轮播图设置
+    let index_num = 0
+    pic_list.each(function () {
+        $(this).attr('index-num', index_num)
+        index_num++
+    })
+    /*let index_num2 = 0
+    dot_list.each(function () {
+        $(this).attr('index-num',index_num2)
+        index_num2++
+    })*/
+    //左键 减一
+    btn_left.click(function () {
+        let curr_pic = $('.pic-show'),
+            curr_pic_index = curr_pic.attr('index-num')
+        dot_list.eq(curr_pic_index).toggleClass('dot-show')
+        curr_pic.toggleClass('pic-show')
+        if (curr_pic_index == 0) {
+            pic_list.eq(4).toggleClass('pic-show')
+            dot_list.eq(4).toggleClass('dot-show')
+            return false
+        }else {
+            pic_list.eq(curr_pic_index - 1).toggleClass('pic-show')
+            dot_list.eq(curr_pic_index - 1).toggleClass('dot-show')
+        }
+    })
+    //右键 加一
+    btn_right.click(function () {
+        let curr_pic = $('.pic-show'),
+            curr_pic_index = curr_pic.attr('index-num')
+
+        dot_list.eq(curr_pic_index).toggleClass('dot-show')
+        curr_pic.toggleClass('pic-show')
+        if (curr_pic_index == 4) {
+            pic_list.eq(0).toggleClass('pic-show')
+            dot_list.eq(0).toggleClass('dot-show')
+            return false
+        }else {
+            pic_list.eq(Number(curr_pic_index) + 1).toggleClass('pic-show')
+            dot_list.eq(Number(curr_pic_index) + 1).toggleClass('dot-show')
+        }
+    })
+    // 小圆点点击事件
+    dot_list.click(function () {
+        let curr_dot = $('.dot-show'),
+            curr_pic = $('.pic-show')
+        curr_pic.toggleClass('pic-show')
+        curr_dot.toggleClass('dot-show')
+        pic_list.eq(Number($(this).index())).toggleClass('pic-show')
+        $(this).toggleClass('dot-show')
+    })
+    // 自动轮播
+    let timer = setInterval(function () {
+        let curr_pic = $('.pic-show'),
+            curr_pic_index = curr_pic.attr('index-num')
+
+        dot_list.eq(curr_pic_index).toggleClass('dot-show')
+        curr_pic.toggleClass('pic-show')
+        if (curr_pic_index == 4) {
+            pic_list.eq(0).toggleClass('pic-show')
+            dot_list.eq(0).toggleClass('dot-show')
+            return false
+        } else {
+            pic_list.eq(Number(curr_pic_index) + 1).toggleClass('pic-show')
+            dot_list.eq(Number(curr_pic_index) + 1).toggleClass('dot-show')
+        }
+    },3000)
+    //
+    let box = $(".Rotation-pic")
+    box.hover(function () {  // 鼠标移入 清除定时器 达到暂停效果
+        clearInterval(timer)
+    },
+    function () {       // 鼠标移除 在开启定时器，继续轮播
+        timer = setInterval(function () {
+        let curr_pic = $('.pic-show'),
+            curr_pic_index = curr_pic.attr('index-num')
+
+        dot_list.eq(curr_pic_index).toggleClass('dot-show')
+        curr_pic.toggleClass('pic-show')
+        if (curr_pic_index == 4) {
+            pic_list.eq(0).toggleClass('pic-show')
+            dot_list.eq(0).toggleClass('dot-show')
+            return false
+        } else {
+            pic_list.eq(Number(curr_pic_index) + 1).toggleClass('pic-show')
+            dot_list.eq(Number(curr_pic_index) + 1).toggleClass('dot-show')
+        }
+    },3000)
+    })
+</script>
+</body>
+</html>

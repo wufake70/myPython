@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链属性问题</title>
+</head>
+<body>
+<script>
+    /*
+    *1.读取对象的属性值时: 会自动到原型链中 查找
+    *2.设置对象的属性值时: 不会查找原型链，
+    *                       如果当前对象中没有此属性，会直接添加 此属性并设置相关值
+    *
+    *3.方法一般定义在原型中，属性一般通过 构造函数 定义在 对象本身
+    *
+    *
+    * */
+
+    //创建一个构造函数
+    function Fun() {
+
+    }
+    var f1 = new Fun(),
+        f2 = new Fun()
+    //给Fun 的原型添加一个属性
+    Fun.prototype.hi = 'hello world'
+    console.log(f1.hi)
+    // 给对象 f1 设置属性，不会查找原型链，直接给对象本身设置
+    f1.hi = '你好世界'
+
+    /*f1.__proto__.hi = '你好世界' */ // 修改原型链 hi 属性值
+    console.log(f1.hi)
+    console.log(f2.hi)
+
+</script>
+</body>
+</html>

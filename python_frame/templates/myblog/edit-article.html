@@ -1,0 +1,104 @@
+{% extends "myblog/add-article.html" %}
+{% load static %}
+{% block title %}
+    编辑页面
+{% endblock %}
+
+{# css样式表#}
+{% block css %}
+    <style>
+    html{
+        overflow: hidden;
+    }
+    .footer{
+            width: 100%;
+            height: 79px;
+            background: white;
+            margin-top: 160px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            position: fixed;
+            bottom: 0px;
+
+        }
+    </style>
+{% endblock %}
+
+
+
+{#{% block head %}#}
+{% block h1 %}
+    <br>
+    <a href="{% url 'blog_index'%}">返回主页</a>
+    &emsp;&emsp;
+    <a href="{% url 'list'%}">返回列表</a>
+    &emsp;&emsp;
+    <span>浏览次数:{{ views.view }}</span>
+    &emsp;&emsp;
+    <span>创建时间: {{ edit.create_time }}</span>
+    &emsp;&emsp;
+    <span id="update_time">上次修改时间: <span>{{ edit.update_time }}</span></span>
+    &emsp;
+
+{% endblock %}
+{% block edit-div %}
+        <form action="" method="post" > {%  csrf_token %} {# 防止跨域请求   #}
+        标题: <input type="text" name="title" placeholder="请输入文章标题" value="{{ edit.title }}" style="width: 1000px">
+        <br>
+        {#  多行文本域   #}
+        内容:<br><textarea name="content"  cols="170" rows="20" placeholder="请输入文章内容" value=""> {{ edit.content }}</textarea>
+        <br> <input type="button" value="保存编辑">
+        </form>
+{#        <br> <a href="{% url 'blog_index'%}">返回主页</a>#}
+{#        &emsp;&emsp;#}
+{#        <a href="{% url 'list'%}">返回列表</a>#}
+        <div class="alert"> <span></span></div>
+{% endblock %}
+
+{#{% endblock %}#}
+
+
+{# js代码#}
+{% block script %}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+        var content = $('[name=content]'),
+            title = $('[name=title]'),
+            btn = $('[type=button]'),
+            tip = $('.alert>span'),
+            tip_alert = $('.alert'),
+            update_time = $('#update_time>span')
+
+        btn.click(function () {
+            //post请求时用来绕过csrf验证的，同表单提交的{% csrf_token %}一样
+            $.ajaxSetup({data: {csrfmiddlewaretoken: '{{ csrf_token }}'}});
+            $.ajax({
+                url: "{% url "blog_edit" edit.id %}",
+                type: "post",
+                data: {
+                    'title': title.val(),
+                    'content': content.val()
+                },
+                success: function (data) {
+                    tip.text(data.message)
+                    update_time.text(data.update_time)
+                    tip_alert.css({
+                                'display': 'inline-block',
+                            })
+                            {#三秒后隐藏 消失#}
+                            setTimeout(function () {
+                                tip_alert.css({
+                                    'display': 'none',
+                                })
+                            }, 1500)
+
+                }
+            })
+        })
+
+
+
+
+    </script>
+{% endblock %}

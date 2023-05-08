@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+<script>
+    /*
+    * 1.什么是对象？
+    * 多个数据的封装体
+    * 比变量存储更多数据，(一个变量只能存储一个数据)
+    *
+    * 2.为什么要用对象？
+    * 统一管理 多个(有联系的)数据
+    *
+    * 3.对象的组成？
+    * 属性: 属性名(字符串，语法优化，可以不写双引号)+属性值(任意类型)
+    * 方法(特别属性): 属性值是函数
+    *
+    * 4.如何访问对象内部数据？
+    * 法一，obj.attribute
+    * 法二，***obj['attribute']*** 中括号 可以传入变量
+    * */
+    var person = {name: 'Tom', age: 90, action: function () {alert('hello world')}}
+    alert('姓名:'+person.name+'\n年龄:'+person['age'])
+    person.action()
+
+    /*5.什么时候必须使用 obj['attribute']的方式
+    * ① 属性名函数 特殊字符 '-',' '(空格)
+    * ② 变量名不确定
+    *
+    * */
+
+</script>
+</body>
+</html>

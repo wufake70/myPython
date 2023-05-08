@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异常</title>
+</head>
+<body>
+
+<script>
+  var fun = function () {
+      alert(a)      // a 未定义
+  }
+
+  try {  //可能出现异常的代码
+      fun()
+      // if () throw '……' 自定义异常。
+
+  } catch (e) {     // 捕获异常，输出相关信息
+      alert(e.name+','+e.message)
+  } finally {
+      alert('报不报错，我都会执行')
+  }
+
+</script>
+</body>
+</html>

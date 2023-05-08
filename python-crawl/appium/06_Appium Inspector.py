@@ -1,0 +1,8 @@
+"""
+Appium Inspector
+"""
+
+
+
+
+

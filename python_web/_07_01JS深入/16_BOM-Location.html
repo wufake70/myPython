@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location</title>
+</head>
+<body>
+<button type="button"> 点我一下</button>
+<br>
+<input type="text" placeholder="         ">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*
+    * Location
+    *   属性
+    *   location 文件的完整 路径（url）
+    *
+    *
+    *
+    *   方法
+    *   assign()
+    *       用来跳转其他的页面，和直接修改location 效果一样
+    *
+    *   reload()
+    *       重新加载当前页面
+    *
+    *   replace()
+    *       使用新的文档替换旧的文档，不会生成历史记录
+    *
+    * */
+
+
+    var btn = $('button')
+    btn.click(function () {
+        //修改location属性 会自动跳转 到相应的页面
+        /*location = 'http://www.baidu.com'
+        alert(location)*/
+
+        location.reload()
+
+
+    })
+
+
+</script>
+</body>
+</html>

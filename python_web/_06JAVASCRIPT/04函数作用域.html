@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+
+
+<script>
+    var a = 100       // var 关键字声明全局变量
+    var fun1 = function (){
+        alert(a)
+        a += 2       //1.函数内可以访问外面的变量
+                    //2.也可修改变量值
+    }
+    /*fun1()
+    alert(a)*/
+
+    var fun2 = function (){
+        var a = 200     //在函数中不使用var(let const) 声明的变量都为 全局变量(script标签内
+        alert(a)          //使用之后都为 局部变量，
+    }
+    /*fun2()
+    alert(a)*/
+
+    var fun3 = function () {
+    var a = 200
+    function fun4() {
+        /*var a = 109*/    // 局部变量的局部变量 无法修改 局部变量
+        alert(a)            // 200
+        a = 999             //
+        }
+    fun4()
+    alert(a)
+    }
+    //fun3()      //200 、999
+    //alert(a)    //100
+
+
+    //块级作用域
+    {
+        var i = 0       //不是函数作用域，var 声明的变量为全局变量，块外可获取
+        let j = 999     //let 用于声明 块级作用域的局部变量，块外不可获取
+    }
+    //alert(i)
+    //alert(j)
+
+
+    //自定义函数  会自动执行 （~,+,- 都可以
+    ~function () {
+        alert(9999)
+    }()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的冒泡</title>
+</head>
+<body>
+<div style="width: 300px;height: 300px;border: 2px solid black; background-color: yellowgreen">
+    <button style="float:right; position: absolute;">点我一下</button>
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*1.事件的冒泡：
+            就是 事件的向上传导，
+            当后代元素上的事件被触发是，
+            其祖先元素的相同类型事件也会被触发。*/
+    let body = $('body'),
+        div = $('div'),
+        button = $('button')
+
+    // 为下列元素 绑定相同类型的事件
+    body.click(function () {
+        alert('body 标签被点击了')
+    })
+    div.click(function () {
+        alert("div 标签被点击了")
+    })
+    /*button.click(function () {
+        alert('button 标签被点击了一下')
+    })*/
+
+    //2.可以为 同一元素设置 相同类型的事件
+    // 在次为 button 设置 点击事件
+    button.click(function () {
+        alert('nij000')
+        event.cancelBubble = true // 取消事件冒泡
+    })
+    // 注意: 第一个事件会先被触发，
+
+    //3.可以为 同一元素 解除 所有想同类型的事件
+    //button.off('click')
+    // 注意: 由于button的父级元素，也设置点击事件，
+    // 此时点击 button 会触发 div 的点击事件
+    // 即使 该元素 脱离了文档流 也会触发事件
+
+    //4.执行点击事件
+    //button.click()
+
+</script>
+</body>
+</html>

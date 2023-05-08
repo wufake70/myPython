@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn1">
+    点我一下
+</button>
+<button id="btn2" onclick="func2()">
+    点我一下
+</button>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    // 以元素的属性的形式 绑定 事件
+    let btn1 = document.querySelector('#btn1'),
+        btn2 = document.querySelector('#btn2')
+
+    function func1() {
+        alert('我是button1')
+    }
+    function func2() {
+        alert('我是button2')
+    }
+
+    // 可以采用 移除 属性的方法，解除事件
+    //btn2.removeAttribute('onclick')   //js方法
+    //$(btn2).removeAttr('onclick')    // jq方法
+
+    // 通过 js的方法 解除绑定，是无效的
+    // $(btn2).unbind('click')
+
+
+
+</script>
+</body>
+</html>

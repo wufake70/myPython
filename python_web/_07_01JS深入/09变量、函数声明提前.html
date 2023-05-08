@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量、函数声明提前</title>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    /*1.使用var 关键字声明的变量 都会在执行全部代码前提前声明,但不会提前赋值*/
+    /*如下*/
+    num = 999   /*变量声明提前，但是 赋的值111，不会提前*/
+    alert(num)
+    var num = 111  /*这里使用let关键字 立即报错*/
+
+    /*2.函数声明提前和函数表达式*/
+    /*函数声明 即有名函数,会在执行所有代码之前 提前声明*/
+    /*如下*/
+    fun1()  /*使用函数声明，可以提前调用函数*/
+    function fun1() {
+        alert('hello world')
+    }
+    /*函数表达式，即声明一个变量接收我们创建的函数*/
+    /*fun2()  使用函数表达式，不能提前调用该函数*/
+    var fun2 = function () {
+        alert('nihao!!')
+    }
+    fun2()
+
+    /* ***3.以下三种弹出框，还有print() 都会造成浏览器页面阻塞，也会阻塞javascript代码
+    通过js 修改元素的属性，
+    然后浏览器渲染 出相应效果(渲染的过程比较慢,导致 alert()大多数情况下会阻塞 页面渲染**)
+    alert()     警告框
+    prompt()    用户参数框
+    confirm()   用户确认框
+    print()     打印 浏览器页面的内容
+    */
+
+</script>
+</body>
+</html>

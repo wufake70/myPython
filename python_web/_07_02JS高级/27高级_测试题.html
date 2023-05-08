@@ -1,0 +1,59 @@
+<html>
+
+<body>
+    <script>
+        // 例题一：判断输出了什么 
+        var name = "window";
+
+        var obj = {
+            name: "object",
+            do: function () {
+                return function () {
+                    return this.name;
+                }
+            }
+        };
+
+        console.log(obj.do()())     // window
+        // 解析：obj.do() -----> 返回了 一个函数 ------> 然后调用一个了 函数，调用对象是window
+
+
+        // 例题二
+
+        var obj2 = {
+            name: "object",
+            do: function () {
+                var that = this; // this 是 obj
+                return function () {    // 闭包函数
+                    return that.name;
+                }
+            }
+        };
+
+        console.log(obj2.do()())    // object
+
+
+        // 例题三 ******
+        function fun(n, o) {
+            console.log(o)
+            return {
+                fun: function (m) {     // 闭包函数
+                    return fun(m, n);   // 引用了 n 变量
+                }
+            }
+        }
+        // console.log(o) 受到 闭包函数的 影响，只有产生新的 闭包函数(即 fun(a).fun(b).fun(c).....) 才能 改变 o 的值
+
+        // var a = fun(0); a.fun(1); a.fun(2); a.fun(3); // undefined,0,0,0
+        // var b = fun(0).fun(1).fun(2).fun(3)           // undefined,0,1,2
+        // 解析 产生 四个 闭包函数 n 的值 一直向下传递 变化
+
+        var c = fun(0).fun(1); c.fun(2); c.fun(3); // undefined,0,1,1
+        // 解析 fun(0).fun(1) 产生了 两个闭包函数，c.fun(2) 产生了第三个闭包函数 ，c.fun(3) 没有产生新的闭包函数 n(o)的值 还是 1
+
+
+
+    </script>
+</body>
+
+</html>

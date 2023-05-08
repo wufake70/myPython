@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <title>{% block title %}模板父级文件{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "admin/css/3D/RESET_CSS/reset.css" %}">
+    <style>
+        html{
+            {#去除横向滚动条#}
+            overflow-x: hidden !important;
+            background-image: url("{% static "admin/img/myblog/001.jpg" %}");
+            background-size: 100%;
+            background-repeat:no-repeat;
+
+            background-attachment:fixed;
+        }
+        a{
+            text-decoration: none;
+            color: red;
+        }
+        #register-login-box{
+            width: auto;
+            height: 40px;
+            background: #fc5531;
+            border-radius: 0px 0px 0px 20px;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+        }
+        #register-login-box>span{
+            line-height: 40px;
+            margin-left: 20px;
+        }
+        #register-login-box>a{
+            text-decoration: none;
+            color: black;
+            margin-right: 10px;
+        }
+        .footer{
+            width: 100%;
+            height: 79px;
+            background: white;
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            position: relative;
+            bottom: 0px;
+
+        }
+        .footer ul{
+            margin: 7px 0px;
+        }
+        .footer a{
+            color: #999aaa;
+            margin: 0px 15px;
+        }
+
+
+
+    </style>
+{#   css样式表#}
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+{% block head%}
+    <a href="">进入博客主页</a>
+{% endblock %}
+<br>
+{% block register-login-box %}
+    <div id="register-login-box">
+        <span>{{ user }}</span>&emsp;&emsp;
+        <a href="{% url "out" %}">退出</a>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+    <ul class="ul1">
+        <a href="">关于我们</a>
+        <a href="">招贤纳士</a>
+        <a href="">商务合作</a>
+        <a href="">寻求报道</a>
+
+        
+    </ul>
+    <ul class="ul2">
+        <a href="">电话</a>
+        <a href="">邮箱</a>
+        <a href="">在线客服</a>
+        <a href="">公安备案号</a>
+
+    </ul>
+
+    </div>
+{% endblock%}
+
+{% block script %}
+{% endblock %}
+
+{% block script2 %}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+        var reg_log_a = $('#register-login-box a'),
+            reg_log_span = $("#register-login-box span")
+
+        if (reg_log_span.text() === 'AnonymousUser') {
+            reg_log_a.get(0).href = '{% url 'login' %}'
+            reg_log_a.text('登录 | 注册')
+        }
+
+
+
+
+    </script>
+{% endblock %}
+
+</body>
+</html>

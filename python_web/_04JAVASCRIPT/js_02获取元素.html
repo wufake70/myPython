@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素</title>
+</head>
+<body>
+<p id="p1" class="p1">我是q标签1</p>
+<p class="p2 p1">我是q标签2</p>
+<p name="p3">我是q标签3</p>
+<script>
+    //通过id，**不需要加下标**
+    //var a = document.getElementById('p1').textContent;
+
+    //通过class属性值
+    /*var a = document.getElementsByClassName("p1")*/  // 获取的元素放在 集合里面，
+                                                    // 可以通过索引取值
+    /*0: p#p1.p1
+    1: p.p2.p1*/
+
+    //通过标签名
+    /*var a = document.getElementsByTagName('p')[2].textContent*/  // 索引从0 开始
+
+    //通过name属性(一般用 表单input标签) 获取元素，
+    /*var a = document.getElementsByName('p3')[0].textContent;*/
+
+
+    //css选择器
+    //1.获取单个(获取最前面的一个),**不需要加下标**，querySelector
+    /*var a = document.querySelector('#p1').textContent;*/
+    /*var a = document.querySelector('.p1').textContent*/
+
+    //获取所有，querySelectorAll
+    /*var a = document.querySelectorAll('.p1')[1].textContent*/
+    /*注意: 不适用于伪类和伪元素*/
+    //console.log(a)
+
+</script>
+</body>
+</html>

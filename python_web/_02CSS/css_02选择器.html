@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <style>
+        /*标签选择器*/
+        span{
+            color:pink;
+        }
+
+        /*类选择器 只要class属性相同，都修改*/
+        .page1{
+            color: red;
+        }
+
+        /*id选择器 id是唯一的*/
+        #span1{
+            color: blue;
+        }
+
+
+    </style>
+</head>
+<body>
+<span>我是文本标签1</span>
+
+<p class="page1">我是段落标签1</p>
+
+<span id="span1">我是文本标签2</span>
+
+<!--优先级
+id > class > 标签
+精确度越高，优先级越高。
+-->
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器的优先级(权重)</title>
+    <style>
+        /*1.样式的冲突：
+                当我们通过不同的选择器，选中相同的元素，并且相同的样式属性设置不同的样式值时，
+                此时就会发生了样式的冲突
+         发生样式冲突时，将有选择器的优先级(和权重)决定用哪一个样式。
+
+         2.选择器的权重:行内(内联)样式 > id选择器 > 类和伪类选择器 > 属性选择器(通过[]) > 元素选择器
+         选择器的精确度越高，权重就越大*/
+
+        div#box1{
+            background-color: skyblue;
+        }
+        #box1{
+            background-color: red !important;
+        }
+        /*注意: 比较优先级时，需要将所有的选择器做加法计算，
+        如上:前者比后者 多了一个div 标签选择器，优先级相加比，比后者大 即比后者优先
+        如果优先级相同，就近原则。
+        通配选择器 * ，优先级为零，
+        继承的样式，优先级最小。
+
+        可以再某一个样式属性后面加上一个 !important ,是该属性的优先级最高，
+        但是慎用！！
+        */
+
+    </style>
+</head>
+<body>
+<div id="box1" style="width: 20%; height: 100px"></div>
+<!--width可以使用百分比，因为body标签的width就是浏览器的宽度，
+但是height不可以用百分比，因为body标签的height为零，
+-->
+</body>
+</html>

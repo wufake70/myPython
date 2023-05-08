@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            font-size: 30px;
+            color: red;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box1">
+    还有 <span>10</span> 秒
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+
+    fun1()
+    function fun1() {
+
+        let timer = setInterval(function () {
+            let spn = $('span'),
+                num = spn.text()
+            num = num - 1
+            spn.text(num)
+            if (num === 0) {
+                clearInterval(timer)
+                $('div').hide()     //影藏页面元素
+            setTimeout(function () {
+                let val = confirm('是否继续')  //确认框,返回布尔值
+                if (val) {
+                    $('div').show()
+                    spn.text(10)
+                    fun1()
+                }
+            },100)
+        }
+    },100)
+    }
+    setTimeout(function () {
+        alert(999)
+    },300)
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

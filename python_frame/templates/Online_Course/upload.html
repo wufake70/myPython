@@ -1,0 +1,41 @@
+{% extends 'Online_Course/base.html' %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>上传答案</title>
+    {% endblock %}
+
+</head>
+<body>
+
+{#身体#}
+{% block content %}
+    <p style="height: 50px"></p>
+    <div class="content-box1">
+{#    题目和答案#}
+        <form action="", method="post">
+            {% csrf_token %}
+            课程名称: <input type="text" name="course">
+            <br>
+            题目: <br><textarea name="title" id="" cols="30" rows="10"></textarea>
+            <br>
+            选项: <br><textarea name="content" id="" cols="30" rows="10"></textarea>
+            <br>
+            答案: <br><textarea name="myanswer" id="" cols="30" rows="10"></textarea>
+            <br>
+            <input type="submit" value="提交">
+        </form>
+
+    </div>
+{% endblock %}
+
+{% block script%}
+    <script>
+    </script>
+{% endblock%}
+
+</body>
+</html>

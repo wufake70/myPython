@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+
+
+<script>
+    //1.有名函数的 定义，function关键字
+    function func1() {  // 给window对象创建方法
+        alert(99999)
+    }
+    //func1() //函数调用
+
+    //2.匿名函数 ,必须用变量接收，
+    var func2 = function () {
+        alert(88888)
+    }
+    //func2()
+
+    //传参
+    function func3(x) {  // 形参
+        alert(x)
+    }
+    //x = prompt('请输入:')      //输入提示框
+    //func3(x)            //传入实参
+    
+    //可以设置默认参数，
+    function func4(x,y=null) {  // 形参
+        alert(x+y)
+    }
+    //x = prompt('请输入:')      //输入提示框
+    //func4()            //传入实参
+    
+    //可以传入 不定长参数
+    function func5(x,y) {
+        alert(arguments[6])     //设置不定长参数，获取全部参数,用数组来接收
+        alert(x + ',' + y)
+    }
+    //func5(8,8,3,4,5,6,6)
+
+
+    //函数返回值 return      (功能型，默认返回undefined，返回值型
+    var func6 = function (x, y) {
+        x = Number(x)
+        y = Number(y)
+        return x+y
+    }
+
+    x = prompt('请输入:')
+    y = prompt('请输入:')
+    alert(func6(x,y))
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block css %}
+    <style>
+    html{
+        overflow: hidden;
+    }
+    .alert{ {#页面提示框#}
+        {#display: inline-block;#}
+        background: white;
+        width: auto;
+        height: 30px;
+        display: none;
+        overflow: visible;
+        {#width: 25px;#}
+        color: red;
+        padding: 0px 5px 0px;
+        border: 1px solid black;
+        border-radius: 5px;
+        position: fixed;
+        z-index: 99;
+        {#margin: 0px auto;#}
+        left: 43%;
+        top: 85%;
+        {#top: ;#}
+    }
+    .alert>span{
+        line-height: 30px;
+    }
+
+    textarea,[name=title]{
+        opacity: 0.6;
+    }
+    .footer{
+            width: 100%;
+            height: 79px;
+            background: white;
+            margin-top: 160px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            position: fixed;
+            bottom: 0px;
+
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    添加文章
+{% endblock %}
+
+{% block head %}
+    {% block h1 %}
+        <br>
+        <a href="{% url 'blog_index'%}">返回主页</a>
+        &emsp;&emsp;
+        <a href="{% url 'list'%}">返回列表</a>
+    {% endblock %}
+
+    {% block edit-div %}
+        <form action="" method="post" > {% csrf_token %} {# 防止跨域请求   #}
+        标题: <input type="text" name="title" placeholder="请输入文章标题">
+        <br>
+        {#  多行文本域   #}
+        内容:<br><textarea name="content" id="" cols="170" rows="20" placeholder="请输入文章内容"></textarea>
+{#      作者#}
+            <input type="hidden" name="user" value="{{ user }}">
+        <br> <input type="button" value="发布文章">
+        </form>
+{#        <br> <a href="{% url 'blog_index'%}">返回主页</a>#}
+{#        &emsp;&emsp;#}
+{#        <a href="{% url 'list'%}">返回列表</a>#}
+        <div class="alert"> <span></span></div>
+    {% endblock %}
+
+{% endblock%}
+
+{#js代码#}
+{% block script %}
+{#    尽量加载 项目资源#}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+    var title = $('[name=title]'),
+        content = $('[name=content]'),
+        btn = $('[value="发布文章"]'),
+        tips = $('.alert'),
+        tips_text = $('.alert>span')
+
+
+    //判断提交前 title,content 是否为空，
+    btn.hover(function () {
+        // 任一个 为空，使按钮 无效 ，以便于无法提交
+        if (title.val() === '' || content.val() === '') {
+            //alert('未输入任何内容' + btn.get(0).type)
+            //btn.get(0).type = "button"
+
+            {#提示用户 #}
+            btn.click(function () {
+                tips_text.text('文章内容不完整!!!')
+                tips.css({
+                    'display': 'inline-block',
+                })
+                {#三秒后隐藏 消失#}
+                setTimeout(function () {
+                    tips.css({
+                        'display': 'none',
+                    })
+                }, 2000)
+            })
+        }else {
+            {##}
+            $.ajaxSetup({data: {csrfmiddlewaretoken: '{{ csrf_token }}'}});//post请求时用来绕过csrf验证的，同表单提交的{% csrf_token %}一样
+            $.ajax({
+                url: "{% url "add" %}",
+                type: "post",
+                data: {
+                    "title": title.val(),
+                    "content": content.val(),
+                    "info": 0
+                },
+                success: function (data) {
+                    if (data === '文章已存在') {
+                        btn.click(function () {
+                            tips_text.text(data)
+                            tips.css({
+                                'display': 'inline-block',
+                            })
+                            {#三秒后隐藏 消失#}
+                            setTimeout(function () {
+                                tips.css({
+                                    'display': 'none',
+                                })
+                            }, 1500)})
+
+                    } else {
+                        btn.get(0).type = "submit"
+
+                    }
+                }
+            })
+
+            btn.click(function () {
+
+            {#    $.ajaxSetup({data: {csrfmiddlewaretoken: '{{ csrf_token }}'}});//post请求时用来绕过csrf验证的，同表单提交的{% csrf_token %}一样#}
+            {#    $.ajax({#}
+            {#    url: "{% url "add" %}",#}
+            {#    type: "post",#}
+            {#    data: {#}
+            {#        "title": title.val(),#}
+            {#        "content": content.val(),#}
+            {#    },#}
+            {#    success: function (data) {#}
+            {#        tips_text.text(data)#}
+            {#        tips.css({#}
+            {#            'display': 'inline-block',#}
+            {#        })#}
+            {#        三秒后隐藏 消失#}
+            {#        setTimeout(function () {#}
+            {#            tips.css({#}
+            {#                'display': 'none',#}
+            {#            })#}
+            {#        }, 1500)#}
+            {#    }#}
+            {# })#}
+            })
+
+        }}, function () {
+        btn.off('click')
+        btn.get(0).type = "button"
+        })
+
+
+    {#发送 Ajax请求#}
+
+
+
+
+
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

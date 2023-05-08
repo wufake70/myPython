@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变形</title>
+    <style>
+        /*变形: 改变元素的形状的或位置，变形不会影响页面的布局
+
+        transform 样式属性
+        相关值
+        translateX()    沿着x轴平移（水平向右）
+        translateY()    沿着y轴平移 （垂直向上）
+
+        translateZ()    沿着z轴平移 （近大远小）
+        默认情况下网页不支持透视，如果需要看见效果，必须开启网页的的视距
+
+        scale()         元素的缩放，尺寸变大变小
+        scaleX()        x轴的缩放
+        scaleY()        y轴的缩放
+
+
+        */
+        /*html{
+            perspective: 1200px;
+        }*/
+        body{   /*父元素开启透视*/
+            perspective: 1200px;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+            margin: 100px auto 0px;
+
+            /*transform: translateX(100px) translateY(100px) ;
+            transform: translateZ(100px);*/
+            transition: 2s;
+        }
+        .box1:hover{
+            transform: translateZ(400px);
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: auto;
+            /*position: absolute;
+            left: 50%;
+            transform: translateX(-50%);  水平居中*/
+            /*top: 50%;
+            transform: translateY(-50%); 垂直居中*/
+            opacity: .3;
+        }
+
+        .box2:hover{
+            transform: scale(1.3);
+            transition: 2s;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+
+
+</body>
+</html>

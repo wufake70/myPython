@@ -1,0 +1,148 @@
+{% extends 'myblog/base.html' %}
+{% load custom_tags %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "admin/css/3D/RESET_CSS/reset.css" %}">
+    <link rel="stylesheet" href="{% static 'admin/fonts/myblog/font_sh4eosc32fq/iconfont.css' %}">
+<style>
+
+    .layui-layer-content{
+        overflow-x: hidden !important;
+    }
+
+    tr{
+        position: fixed;
+        left: 20px;
+        top: 20px;
+    }
+    .font001{
+        width: auto;
+        height: auto;
+        position: relative;
+        left: 35%;
+        font-size: 50px;
+        color: #df5000;
+
+    }
+
+    .main-box{
+        width: 1000px;
+        height: auto;
+        background: rgb(255,255,255);
+        border-radius: 5px;
+        border: 2px solid rgba(255,255,255, 1);
+        margin: auto;
+        position: relative;
+        top: 60px;
+        {#overflow: auto;#}
+
+
+    }
+    ul{
+        width: 90%;
+        margin: auto;
+    }
+    .blog-li{
+        width: 100%;
+        height: auto;
+        margin: auto;
+        display: block;
+        {#line-height: 24px;#}
+        border-bottom: 1px solid #ededed;
+    }
+    .blog-li>a{
+        display: inline-block;
+        width: auto;
+    }
+    .blog-li>a:hover{
+        color: #df5000;
+    }
+    .title{
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+        margin: 4px 0px 10px 0px;
+    }
+    .content{
+        display: block;
+        font-size: 17px;
+        color: #999aaa;
+        margin-bottom: 10px;
+    }
+    .li-info{
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+    .author,.date{
+        float: right;
+        margin: 0px 10px;
+    }
+
+    .curr-time{
+        position: absolute;
+        right: 0px;
+    }
+
+
+</style>
+{% endblock %}
+
+{% block title %}
+    博客首页
+{% endblock %}
+
+{% block head %}
+    <table>
+    <tr>
+    <td>
+        &emsp;<a href="{% url 'add' %}">添加文章</a>
+    </td>
+    <td>
+        &emsp;<a href="{% url 'list' %}">文章列表</a>
+    </td>
+    </tr>
+    </table>
+    <div class="font001"><br>WELCOME TO 吾论</div>
+    <div class="main-box">
+        <span class="new-article-span">
+            最近十文章
+        </span>
+        <span class="curr-time">
+            {% current_time %}
+        </span>
+        <br>
+        <br>
+        <div class="new-article">
+            <ul>
+                {% for blog in blog_list %}
+                        <li class="blog-li">
+                            <a href="{% url "blog_detail" blog.id %}" class="title">{{ blog.title }} </a>
+                            <span class="content">{{ blog.content|slice:"0:100" }}</span>
+
+                            <div class="li-info">
+                                <span><i class="iconfont icon-yanjing"></i> {{ blog.views }}</span>
+                                <span class="date">{{ blog.create_time.month }}.{{ blog.create_time.day }} </span>
+                                <span class="author">{{ blog.author.name }}</span>
+                            </div>
+                        </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

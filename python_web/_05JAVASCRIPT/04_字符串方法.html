@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串方法</title>
+</head>
+<body>
+<script>
+    var str1 = "hello .world. i am JavaScript."
+    //获取字符串长度
+    /*alert(str1.length)*/
+    //截取,字符串索引 从0开始
+    //alert(str1.slice(0,))  // 遵循 左闭右开
+    //alert(str1[18])  // 支持索引取值
+    //alert(str1.substring(0,))  //截去全部内容，同切片
+
+    //替换
+    var str2 = "hello world. i am Python."
+    //alert(str2.replace('Python', 'JavaScript'))
+
+    //includes 是否包含 某个字符 返回布尔值
+    alert(str2.includes('world'))
+
+    //获取 相关字符的索引
+    //alert(str1.indexOf('.',7))
+    //alert(str1.substring(str1.indexOf('.'),))
+
+    //获取最后的索引
+    //alert(str1.lastIndexOf('.'))
+
+    //切片 split
+    //alert(str1.split('.').length)  // 数组对象接收
+
+    var mailbox = 'wufake70@gmail'
+    //字符串 search方法 返回索引值，没有就返回-1
+    alert(mailbox.search(/@/g))
+</script>
+</body>
+</html>

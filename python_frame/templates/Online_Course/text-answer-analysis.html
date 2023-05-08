@@ -1,0 +1,179 @@
+{% extends 'Online_Course/base.html' %}
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>文本答案解析</title>
+    {% endblock %}
+
+{#    css#}
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+
+{#身体部分#}
+{% block content %}
+
+    <div class="content-box1">
+        <br>
+        请输入课程名称: <input type="text" name="course">
+        <br>
+        请输入文本:
+        <br>
+        <br>
+        <textarea name="fill-textarea" id="" cols="150" rows="35" placeholder="请规范文本格式"></textarea>
+        <br>
+    <button id="submit" type="submit">提交</button>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script>
+    var btn = $('#submit')
+
+    btn.on('click', RegularMatch2)
+
+
+
+    function RegularMatch1() {
+        var text = $('textarea').val()
+        var li = text.replaceAll(/(\d{1,2}.*).*/g, '\n$1').split('\n\n')  // 总题目列表
+
+        li = li.map(function (value) {
+            var i,j,k
+            i = value.replaceAll(/(.*)\n.*/g, '$1')
+            if (value.includes('判断题')){
+                j = '无选项'
+                k = i.replaceAll(/.*(（对）|（错）).*/g, '$1')
+
+                return [i,j,k]
+
+            } else if (value.includes('单选题')) {
+                j = value.replaceAll(/.*(\nA[.\s]*)/g, '$1')
+                {#k = i.replaceAll(/.*(A)|(B)|(C)|(D).*/g, '$1$2$3$4')#}
+                k = i.replaceAll(/.*([ABCD])/g, '$1')
+
+            return [i,j,k]
+
+            } else if (value.includes('多选题')) {
+
+                j = value.replaceAll(/.*(\nA[.\s]*)/g, '$1')
+
+                if (i.replaceAll(/.*(A(B(C(D|)|D|)|C(D|)|D))/g, '$1').startsWith('A')) {
+
+                    k = i.replaceAll(/.*(A(B(C(D|)|D|)|C(D|)|D))/g, '$1')
+                } else if (value.replaceAll(/.*(B(C(D|)|D))/g, '$1').startsWith('B')) {
+
+                    k = i.replaceAll(/.*(B(C(D|)|D))/g, '$1')
+                } else if (i.replaceAll(/.*(CD)/g, '$1').startsWith('C')) {
+
+                    k = i.replaceAll(/.*(CD)/g, '$1')
+                }
+                return [i,j,k]
+            }
+            return undefined
+        })
+        console.log(li)
+
+        if (! $('[name="course"]').val()) {
+
+            alert('请输入课程名!!!')
+            return false
+        }
+
+        var index = 0
+        var timer = setInterval(function () {
+
+            if (li[index]) {
+                if (index === li.length) {
+                    clearInterval(timer)
+                }
+                SaveMysql(li[index], index)
+            }
+            index++
+        }, 10)
+    }
+
+
+
+    function RegularMatch2() {
+
+        var text = $('textarea').val()
+
+        text = text.replaceAll(/\n([^我A-D\d\n].*)/g, '\n')
+        text = text.replaceAll(/(我的.*)\n/g, '$1\n\n')
+        var li = text.split('\n\n')
+
+        li = li.map(function (value) { //
+        if (value === '') {
+            return undefined
+        }
+        var i,j,k
+            {#i = value.replaceAll(/(.*)\n.*/g, '$1')#}
+            if (value.includes('判断题')) { // 判断题
+
+                i = value.replaceAll(/(\n[A-D].*)|(我的.*)/g, '')
+                j = '无选项'
+                k = value.replaceAll(/.*\n(我的.*)/g, '$1')
+                return [i,j,k]
+
+            } else if (value.includes('选题')) {  // 选择题
+
+                i = value.replaceAll(/(\n[A-D].*)|(我的.*)/g, '')
+                j = value.replaceAll(/.*(\nA[.\s]*)/g, '$1')
+                j = j.replaceAll(/(\n我的.*)/g, '')
+                k = value.replaceAll(/(.*\n)*(我的.*)/g, '$2')
+                return [i,j,k]
+
+            }
+        return undefined
+
+        })
+        //console.log(li)
+        if (! $('[name="course"]').val()) {
+
+            alert('请输入课程名!!!')
+            return false
+        }
+
+        var index = 0
+        var timer = setInterval(function () {
+
+            if (li[index]) {
+                if (index === li.length) {
+                    clearInterval(timer)
+                }
+                SaveMysql(li[index], index)
+            }
+            index++
+        }, 10)
+
+    }
+
+
+    function SaveMysql(param, index) {
+        $.ajax({
+            url: "http://192.168.0.198:8000/onlinecourse/upload/",
+            method: 'POST',
+            data: 'title=' + param[0] + '&content=' + param[1] + '&myanswer=' + param[2] + '&course=' + $('[name="course"]').val(),
+            success: function () {
+                console.log(index + ' :  ' + '成功')
+            }
+        })
+
+    }
+
+
+
+    </script>
+
+{% endblock %}
+
+</body>
+</html>

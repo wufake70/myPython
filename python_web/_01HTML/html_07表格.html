@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<body>
+<!--表格标签-->
+<!--    caption 表格标题
+        tr表示一行 row；td表示 单元格
+        colspan属性横向合并单元格
+        rowspan属性纵向合并单元-->
+<table border="1px">
+    <caption>编程语言</caption>
+    <tr>
+    <!--行标签 tr = table row-->
+        <th>种类</th>
+        <th>年龄</th>
+    </tr>
+    <tr>
+        <th>Python</th>
+        <th>33</th>
+    </tr>
+    <tr>
+        <th>C++</th>
+        <th>70</th>
+    </tr>
+    <tr>
+        <th>Java</th>
+        <th>29</th>
+    </tr>
+</table>
+
+<!--长表格
+    头部thead
+    主体tbody
+    底部tfoot-->
+<table border="1px">
+    <thead>
+    <td>日期</td>
+    <td>收入</td>
+    <td>支出</td>
+    <td>合计</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1000</td>
+            <td>1000</td>
+            <td>1000</td>
+            <td>1000</td>
+        </tr>
+        <tr>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+        </tr>
+        <tr>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+        </tr>
+        <tr>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+        </tr>
+        <tr>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+                <td>1000</td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <td></td>
+        <td></td>
+        <td>10000</td>
+        <td>10000</td>
+    </tfoot>
+</table>
+</body>
+</html>

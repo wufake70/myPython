@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位</title>
+    <style>
+        /*定位就是将元素定在网页中的任意位置，更加高级的布局手段
+          注意: 开启定位层级都会提高*/
+
+        /*static    静态定位(默认，没开启定位) （
+
+        relative    开启相对定位(灵魂出窍)
+            通过偏移量(top,left)可以改变位置，但不影响页面布局(不会脱离文档流)，
+            可以提升元素的层级，覆盖一些其他的元素。
+
+        fixed       开启固定定位(也一种特殊的绝对定位)
+            也会脱离文档流，层级也会被提升，
+            永远参考 浏览器视口(可视窗口) 进行定位。
+
+
+        absolute    开启绝对定位(会脱离文档流，元素的 层级 也会提高)
+            偏移量top，left。
+            当祖先级或父级元素没有开启定位时，参考对象是根元素<html>(网页坐标原点在左上角)
+            当祖先级或父级元素 开启定位时，参考对象就是 开启定位的 包含块
+
+            注意: 开启 绝对定位后 margin: auto; 是没有意义的，
+            必须先设置left、right、top、bottom相关的值（为0）
+
+            父相子绝:
+                 可以解决不同浏览器渲染 元素的错位问题，
+                 如果只设置绝对定位，元素参考对象为根元素html，
+                 但是由于不同浏览器底层处理器(内核)不同，
+                 （即该元素(在不同浏览器)位置不同）
+                 以至于该元素在一个浏览器处于正常位置，
+                 换一个浏览器就会出现错位问题。
+
+            包含块 containing block
+            离本元素最近的祖先(父级) 块 元素
+
+        sticky      粘滞定位
+           */
+
+
+        #d1{
+            /*width: 500px;
+            height: 500px;*/
+            border: 10px solid red;
+
+            /*静态定位 没有任何改变*/
+            /*position: static;
+            top: 200px;*/
+
+    }
+        #d2{
+             /*相对定位 相对 原来的位置 进行定位,对页面的布局不会有影响(操作不当，会内容溢出)*/
+
+            /*position: relative;
+            top:200px;*/   /*right bottom left*/
+        }
+        #d2{
+             /*绝对定位 参照对象浏览器页面
+                        当父级到祖先级有定位时， 参照父级(祖先级)元素
+                        会脱离文档流*/
+            /*position: absolute;
+            top:200px;*/   /*right bottom left*/
+        }
+        #d3{
+            /*固定定位 参照浏览器窗口,元素也会 脱离文档流 （且设置 伪元素也没有用
+             注意: 一定要设置top、left确定其位置
+                       用于小广告*/
+            position: fixed;
+            top:450px;   /*right bottom left*/
+            left: 1070px;
+        }
+
+
+    div>div{
+        border: 5px dotted brown;
+        width: 100px;
+        height: 100px;
+    }
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="d1">
+    我是div盒子1
+    <div id="d2">
+    <!--块级元素 自动换行-->
+
+    我是div盒子2
+    </div>
+
+    <div id="d3">
+        我是div盒子3
+    </div>
+    <div id="d4">
+        我是div盒子4
+    </div>
+
+</div>
+<div style="height: 2000px">
+
+</div>
+
+</body>
+</html>

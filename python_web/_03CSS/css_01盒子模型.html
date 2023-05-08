@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+
+            /*边框设置*/
+            /*border-style: solid;
+            border-width: 5px;
+            border-color: red;*/
+            /*复核样式*/
+            /*宽度 类型 颜色*/
+            /*border: 2px solid pink;*/
+            /*单独设置边框*/
+            border-left: 5px solid plum;
+            border-top:  10px dashed brown;
+            border-right: 15px double red;
+            border-bottom: 20px dotted green;
+            /*注意: 设置border时，border同样也会影响页面的布局(margin、padding多会)
+                    就比如在设一些特殊样式时，划入划出，如果设置的border大小 不等于 原来的参数时，
+                    都会影响页面布局，造成一些微小的位移效果*/
+
+
+            /*内边距 内容到边框的距离、padding填充*/
+            /*内边距 会增大原盒子的大小、不能设置为负值*/
+            /*上内边距 */
+            /*padding-top: 150px;
+            !*左内边距 *!
+            padding-left: 150px;*/
+            /*复合样式 一个参数表示全部，*/
+            /*两个参数 第一个是上下、第二个左右*/
+            /*三个参数 第一个是上、第二个左右、第三个下*/
+            /*四个参数 上右下作 顺时针*/
+            /*padding: 100px 100px 100px 100px;*/
+
+
+
+        }
+
+        #d1{
+            /*外边距 边框与边框的距离*/
+            /*1.不会改变盒子大小
+              2.外边距过大，盒子内容会撑出盒子
+              3.可以设置负值
+              4.可用通margin的左右 为auto 来设置水平居中*/
+            /*上外边距*/
+            margin-top: 100px;
+            /*左外边距*/
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-bottom: 100px;
+            /*复合样式 顺序同内边距*/
+
+
+            /*设置 行内块元素
+            1.可以识别宽高 ，设置宽高有效
+            2.不会自动换行
+            3.input也是 行内块元素
+            4.可以通过 display 转化标签类型(行内，块级)
+            5.两个独立盒子左右边距 相加
+            6.两个独立盒子 上下边距 取最大值
+            7.***盒子内套着盒子时，父级和子级的 上边框重叠，
+            此时设置子元素的margin-top，将传给父级，父子元素同时下移*/
+
+            display: inline-block;
+        }
+
+        #d2{
+            margin-left: 100px;
+            display: inline-block;
+        }
+
+        #d3{
+            width: 150px;
+            height: 150px;
+            margin: 100px auto;   /*auto 表示水平(横向)居中*/
+        }
+        span{
+            color: red;
+           line-height: 150px;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">
+    我是div盒子1
+</div>
+<div id="d2">
+    <!--块级元素 自动换行-->
+
+    我是div盒子2
+</div>
+<div id="d3">
+    <!--块级元素 自动换行-->
+
+    <span>我是div盒子3</span>
+</div>
+
+</body>
+</html>

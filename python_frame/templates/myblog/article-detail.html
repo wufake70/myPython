@@ -1,0 +1,60 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block title %}
+    文章详情
+{% endblock %}
+
+{#css样式表#}
+{% block css %}
+    <style>
+    html{
+        {#overflow: hidden;#}
+    }
+        .content{
+            background: rgba(255,255,255, 0.6);
+            border: 1px solid black;
+            opacity: 0.8;
+            width: 70%;
+            height: 450px;
+            overflow: scroll;
+        }
+        .s{
+            background: rgba(255,255,255, 0.5);
+        }
+    </style>
+
+{% endblock %}
+
+{% block head %}
+{#    标题#}
+    <br>
+
+    &emsp;<h2 style="font-size: 22px; font-weight: bold;">{{ detail.title }}</h2>
+
+
+{#    导航栏#}
+    <br> <a href="{% url "list" %}">回到列表</a>
+    &emsp;&emsp;<a href="{% url "blog_index" %}"> 回到首页</a>
+    &emsp;&emsp; <a href="{% url "blog_edit" detail.id %}">编辑此文章</a>
+     &emsp;&emsp;
+    <span id="views" class="s">浏览次数: <span>{{ views.view }}</span></span>
+    &emsp;&emsp;
+    <span class="s">创建时间: {{ detail.create_time }}</span>
+    &emsp;&emsp;
+    <span class="s">上次修改时间: {{ detail.update_time }}</span>
+     &emsp;&emsp;
+    <span class="s">作者: {{ blog_author.name }}</span>
+
+    <br> <br>
+{#    内容#}
+    <div class="content">{{ detail.content }}</div>
+{% endblock %}
+
+# js代码
+{% block script %}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+
+
+    </script>
+{% endblock %}

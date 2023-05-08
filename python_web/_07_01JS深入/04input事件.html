@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input事件</title>
+</head>
+<body>
+<p>请在文本字段中写一些内容来触发函数。</p>
+<input type="text" id="myInput" oninput="myFunction()">
+<p id="demo"></p>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput").value;
+        document.getElementById("demo").innerHTML = "You wrote: " + x;
+    }
+    //此事件类似于 onchange 事件。
+    // 不同之处在于 oninput 事件在元素值改变后立即发生，
+    // 而 onchange 在元素失去焦点，且内容发生改变后发生。
+    // 另一个区别是 onchange 事件也适用于 <select> 元素。
+
+
+    //当元素的 事件以属性的形式 绑定时，通过js方法 无法解除绑定
+    //$('input').removeAttr('oninput')
+    $('input').unbind('input',myFunction)
+
+</script>
+</body>
+</html>

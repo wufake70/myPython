@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上边框重叠</title>
+    <style>
+        /*当父子元素的上边框重叠时，此时设置子元素的margin-top，
+        父子元素将同时移动*/
+        /*解决方法:
+        1.开启BFC 块级格式环境
+        2.插入伪元素before
+        */
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin-top: 100px;
+        }
+
+        /*插入伪元素before*/
+        /*#box1::before{
+            content: "";
+            display: table;   !*标签类型为table*!
+
+        }*/
+
+        /*.clearfix  这个样式可以解决高度坍塌问题，(上)外边距重叠问题
+        可以直接添加在class 属性里使用*/
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box1" class="clearfix">
+    <div id="box2"></div>
+</div>
+</body>
+</html>

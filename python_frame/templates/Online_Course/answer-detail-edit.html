@@ -1,0 +1,76 @@
+{% extends 'Online_Course/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>答案编辑</title>
+    {% endblock %}
+
+    {% block style %}
+        <style>
+            textarea{
+                resize: none;
+                {#border: none;#}
+                width: 800px;
+                margin: 10px 200px;
+            }
+            .delete{
+                text-decoration: none;
+                color: red;
+            }
+        </style>
+    {% endblock %}
+
+</head>
+<body>
+
+{# 身体#}
+
+{% block content %}
+<div class="box">
+
+    <br><textarea id="title" name="title" style="height: 150px" placeholder="题目:">{{ result.title }}</textarea>
+    <br><textarea id="content" name="content" style="height: 70px;" placeholder="选项:">{{ result.content }}</textarea>
+    <textarea id="answer" name="answer" style="height: 50px;" placeholder="答案:">{{ result.answer }}</textarea><br>
+    <textarea id="course" name="course" placeholder="课程:" style="height: 50px">{{ result.course }}</textarea><br>
+    <input id="btn" type="button" value="提交"> <button><a class="delete" href="{% url 'AnswerDelete' result.id %}">删除</a></button>
+</div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script>
+        var btn = $('#btn'),
+            title = $('#title'),
+            content = $('#content'),
+            answer = $('#answer'),
+            course = $('#course'),
+            id = {{ result.id }}
+
+
+        btn.on('click', Send)
+
+
+        function Send() {
+            $.ajax({
+                url: '',
+                method: 'POST',
+                data: 'title=' + title.val() + '&content=' + content.val() + '&answer=' + answer.val(),
+                success: function () {
+                    console.log('修改成功')
+                }
+
+            })
+
+        }
+
+    </script>
+
+{% endblock %}
+
+
+</body>
+</html>

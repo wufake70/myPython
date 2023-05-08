@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动和高度坍塌</title>
+    <style>
+        /*浮动: 通过浮动使用一个元素向其 父元素 的 左边或右边浮动，用于水平布局
+        注意:
+         1.同一个父级盒子里 前面一个子代div 没设置浮动，
+        后面的都设置了，此时后面的div 元素无法覆盖前一个div，因为他没脱离文档流
+        2.浮动元素 不会超过他上边的浮动的兄弟元素，最多就是和他一样高
+        3.浮动元素 不会盖住文字，文字自动环绕在浮动元素的周围 */
+
+        /* 脱离文档流的特点:
+        1.元素脱离文档流后就不区分 块级和行内
+        2.不会独占一行
+        3.不设置宽高情况下，会被内容撑开
+         */
+
+
+
+    #d1{
+        /*width: 500px;
+        height: 500px;*/
+        border: 10px solid red;
+        /*position: relative;
+        top: 100px;*/
+        /*display: inline-block;*/
+        /*overflow: hidden;*/
+    }
+
+    div>div{
+        border: 5px dotted brown;
+        width: 100px;
+        height: 100px;
+
+    }
+
+    #d2{
+        background-color: red;
+        /*设置浮动元素 脱离文档流*/
+        /*脱离文档流后 原位置会被下一元素顶替*/
+        /*全部右浮动 元素不会重叠、而是有序排列*/
+
+        float: left;
+    }
+    #d3{
+
+        background-color: green;
+        float: left;
+    }
+
+    #d4{
+
+        background-color: pink;
+        float: left;
+    }
+
+    /*缺点(高度坍塌):当子级元素全部设置为浮动，且父级不设置高度，父级高度会变为0.会对其他的元素的布局有影响*/
+        /*解决方法:
+        1.添加高度,页面的内容就写死了，内容过多就会溢出 overflow
+        2.添加overflow
+        3.添加一个空白的div
+        4.{推荐}使用伪元素*/
+        /*#d1::after{   !*表示在 id为d1的div元素的的子元素最后面 添加一个伪元素*!
+            !*伪元素默认是行内(内联)标签，不能设置宽高*!
+            display: block;
+            !*清楚左右浮动*!
+            clear: both;
+            !*设置内容为空*!
+            content: "";
+        }*/
+        /*5.BFC(block formatting Content) 块级格式化环境
+            bfc 是css中一个隐含的属性，可以为一个元素开启BFC
+            开启bfc 该元素会变成一个独立布局区域。
+            1.开启bfc的元素 不会被浮动元素所覆盖住
+            2.开启bfc的元素子元素和 父元素外边距 不会重叠
+            3.……可以包函浮动的子元素***
+
+            开启bfc的方式
+             1.设置元素的浮动
+             2.display: line-block
+             3.设置overflow 为非visible 的值 一般设置为hidden，;*/
+
+        #d6{ /*d5和d6的外边距发生重叠，子元素的外边距传给了父元素，父子元素同时下移100px*/
+            margin-top: 100px;
+            /*margin-left: 100px;*/
+        }
+
+
+    </style>
+</head>
+<body>
+<!--浮动 是当前元素脱离文档流，
+    文档流要么从上往下排列(块级)，
+    要么从左往右(内联)
+    一般用于导航栏-->
+
+<div id="d1">
+    我是div盒子1
+    <div id="d2">
+    <!--块级元素 自动换行-->
+    我是div盒子2
+    </div>
+    <div id="d3">
+        我是div盒子3
+    </div>
+    <div id="d4" style="width: 150px; height: 150px">
+        我是div盒子4
+    </div>
+</div>
+<div id="d5" style="height: 300px; width: 300px; background-color: yellowgreen;">
+
+    <div id="d6" style="width: 100px; height: 100px; background-color: green; "> 我是盒子6</div>
+    我是盒子5
+</div>
+
+</body>
+</html>

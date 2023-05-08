@@ -1,0 +1,11 @@
+
+// 谷歌、edge、火狐
+document.body.style['userSelect'] = "none"
+
+
+
+
+
+
+
+

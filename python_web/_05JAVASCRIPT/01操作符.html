@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作符</title>
+    <link rel="stylesheet" href="./reset_css/reset.css">
+</head>
+<body>
+<script>
+    /*1.算数运算符 */
+    document.write(1+'2' +'<br>')   //字符串拼接
+    document.writeln(1-'2'+'<br>')   // -1,会隐式转换    （减、乘、除都有隐式转换,空字符串为零
+    document.writeln(1+true+'<br>')     //2
+    document.writeln(1+false+'<br>')  //1
+    document.writeln(1+null+'<br>')     //1
+    document.writeln(1+undefined+'<br>')    //NaN  不是一个值
+
+
+    /*2.赋值运算符 +=、-=、i++、++i*/
+    var i = 1
+    document.write(i++ +','+ i +'<br>')  // 放在++之前 第一次输出i++ 为原值 （先输出，在自增
+    var a = 1
+    document.writeln(++a +','+a +'<br>')    //放在++之后 第一次输出++a 就会增加一  （先自增，在输出
+
+    /*3.逻辑运算符*/
+    /*逻辑与运算 &&*/
+    /*逻辑或运算 ||*/
+    /*逻辑非运算 ！*/
+
+
+    /*4.比较运算符*/
+    /*等等于(==，不全等于)，只判断值是否相等，不判断类型，适用于字符串和数值*/
+    var c = 'null',
+        d = 'undefined'
+    document.writeln(c == null )
+    document.writeln(d == undefined )
+    /*全等于(===)，先判断类型，在判断值*/
+    /*不等于 ！=*/
+    document.write(NaN == NaN)  // 结果为 false
+
+
+</script>
+</body>
+</html>

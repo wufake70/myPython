@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+<script>
+    //定义一个JSON对象,   注意:键名要用 双引号 包围
+    var json1 = {"name": "孙悟空",
+        "sex": "男",
+        "age": "20",
+        "武力值": "100000",
+        "职业": "打野"}
+    // 取出 json的值
+    //alert(json1.name)
+    //alert(json1['name'])
+    //修改 相关值
+    //json1.职业 = '法师'
+    //alert(json1.职业)
+
+    // 遍历JSON的值
+    /*for (var key in json1) {
+        //alert(typeof key)   字符串
+        alert(json1[key])   //******json1.key 不可行，'.'的后面不能放 变量****
+    }*/
+
+    // JSON两大方法
+    // json转字符串
+    let str1 = JSON.stringify(json1)
+    alert(typeof str1)
+    //字符串转json
+    let json2 = JSON.parse(str1)
+    alert(typeof json2)
+
+
+
+
+</script>
+</body>
+</html>

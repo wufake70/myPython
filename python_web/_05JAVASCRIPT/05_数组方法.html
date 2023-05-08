@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+<script>
+    //   Array          注意: 通过选择器 获取到的元素，虽可以下标操作，但他并不是数组
+    array1 = [1, 2, 3, 4, 5, 'JavaScript', 'Python',0,3.2,'你好','a']
+
+    // 数组添加某个元素
+    //array1.push(2)
+
+    //includes 是否包含 某个元素 返回布尔值
+    //console.log(array1.includes(2))
+
+    //删除指定元素，array.splice(元素索引,1) 1表示 删除本身，2表示删除本身和后面一个元素
+    /*array1.splice(array1.indexOf('Python'),1)*/
+
+    //find 返回符合传入测试（函数）条件的数组第一个元素元素。
+    //返回数组中大于 1 第一个元素
+    /*var fun = function (params) {return params > 1}
+    console.log(array1.find(fun))*/
+
+    //filter 检测元素，并返回符合条件所有元素的数组。
+    //返回 数组中元素的长度大于 1的所有元素
+    /*var fun = function (params) {return params.length > 1}
+    console.log(array1.filter(fun))*/
+
+    // 获取长度
+    //alert(array1.length)
+
+    //切片
+    //alert(array1.slice(0,4))   //左闭右开
+
+    //颠倒
+    //alert(array1.reverse())
+
+    //排序
+    alert(array1.sort())  // 通过比较字符的ASCII码 升序
+    alert(array1.sort(function (a,b) {
+        //return a-b //升序
+        return b-a //降序
+    }))
+
+    //拼接
+    //alert(array1.join('-'))
+
+    //数组forEach() 遍历  支持主流浏览器
+    /*array1.forEach(function (params){   // 向函数内传入参数
+        alert(params)
+    })*/
+    /*array1.forEach(function (value,index,array){
+        alert(value+','+index+','+array)
+
+
+
+    //将选择到的 元素添加到 数组里面
+    /*array = []
+    $('li').each(function () {
+        array.push($(this))
+    })
+    alert(array.length)
+    array.forEach(function (i) {
+        alert(i.text())
+    })*/
+
+
+    //map()函数 ，对数组里的每个元素 进行操作(函数) ，生成新元素，在组成新数组
+
+
+
+</script>
+</body>
+</html>

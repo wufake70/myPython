@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  /*
+  *1.函数的 显示原型指向的对象 默认是 空的 Object 实例对象(但Object不满足)
+  **/
+  console.log(Object.prototype instanceof Object)   //返回 false
+  console.log(Function.prototype instanceof Object)   //返回 true
+
+  /*
+  *2.所有函数都是Function的实例 (包括Function Object)
+  * */
+
+  /*
+  * 3.Object的原型对象 是 隐式原型链的尽头*/
+  console.log(Object .prototype.__proto__)  //返回 null
+  //沿着隐式原型链 去找 alert函数的 隐式原型链的尽头
+  console.log(alert.__proto__.__proto__ === Object.prototype)  //返回 true
+  /*alert(alert.__proto__)*/
+
+</script>
+</body>
+</html>

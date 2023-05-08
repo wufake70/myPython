@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航条</title>
+    <link rel="stylesheet" href="./RESET_CSS/reset.css">
+    <style>
+        .nav{
+            width: 1210px;
+            height: 48px;
+            background-color: #E8E7E3;
+
+            margin: 100px auto; /*将盒子设置水平(横向)居中*/
+        }
+
+        li{
+            /*水平布局*/
+            float: left;
+            height: 48px;
+
+            /*设置垂直(纵向)居中，其值要等于 height(height的值要等于父级的height)*/
+            line-height: 48px;
+
+            margin: 0px auto;
+
+            width: 14.28%;  /*为了将nav的div 空间刚好占满，
+                            需要 每个li元素 平分父级的宽度，使用百分比 更好*/
+        }
+
+        .nav a{ /*此时超链接的只在文字内容上生效，我们需要在整个li标签生效，
+                  就必须去设置超链接的宽高，需要转换表签类型*/
+            display: block;  /*将超链接 转为块级元素*/
+            /*height: 48px;*/  /*这里的高可以继承父类*/
+            /*width: 100%;*/  /*可以不写 直接继承li的 width*/
+            text-align: center;
+
+            /*padding: 0px 40.1px;*/  /*这里如果直接设置 padding ,nav的div 后面将有剩余的空间*/
+            /*注意: 这里宽度可以设置，也可以设置padding ,就是不能设置margin，
+                    因为在margin范围上 a标签不能生效*/
+
+            text-decoration: none;
+            color: #777777;
+            font-size: 18px;
+        }
+
+        .nav a:hover{
+            background-color: #3F3F3F;
+            color: #E8E7E3;
+        }
+
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><a href="">HTML/CSS</a></li>
+        <li><a href="">Browser Side</a></li>
+        <li><a href="">Server Side</a></li>
+        <li><a href="">Programming</a></li>
+        <li><a href="">XML</a></li>
+        <li><a href="">Web Building</a></li>
+        <li><a href="">Reference</a></li>
+
+    </ul>
+</div>
+
+</body>
+</html>

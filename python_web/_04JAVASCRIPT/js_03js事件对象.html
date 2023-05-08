@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+    <style>
+        .contain{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 10px auto;
+        }
+
+        .box{
+            width: 400px;
+            height: 30px;
+            border: 1px solid black;
+            margin: 10px auto;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="contain"></div>
+<div class="box">
+    <span class="s1"></span> <span class="s2"></span>
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+        /*当鼠标在contain 的div移动时，显示鼠标的坐标*/
+        /*onmousemove 鼠标移动事件
+        *
+        * ****
+        * 事件对象
+        *   当事件的响应函数被触发时，
+        *   浏览器每次都会将一个 事件对象 作为实参传提给响应函数
+        *
+        *   在事件对象中封装了当前事件相关的信息，如鼠标坐标，键盘按键，鼠标的滚轮
+        *
+        * 在IE8及以下浏览器，触发响应函数不会传递事件对象，
+        * 而是将事件作为window对象的event属性保存，即 window.event
+        *
+        * 可以使用 下列代码，兼容所有浏览器
+        * 1. if (!event) {
+        *   event = window.event
+        * }
+        *
+        * 2. event = event || window.event   (常用)
+        * 当浏览器 传递事件对象时，直接接收，
+        * 当浏览器 没传递事件对象时(undefined false)，再从window对象获取event属性
+        *
+        *
+        * 事件对象的属性
+        * pageX pageY 返回鼠标的坐标( 参考对象时整个document文档
+        * target      返回触发事件的对象元素
+        * */
+        var area = $('.contain'),
+            X = $('.s1'),
+            Y = $('.s2')
+
+        area.mousemove(function (event) {   /*随便定义一个形参接收事件对象*/
+            /*alert(event)*/
+            /*alert('999')*/
+
+            /*从事件对象中获取 鼠标的坐标*/
+            X.text('X='+event.clientX)
+            Y.text('Y='+event.clientY)
+
+            X.text('X='+event.screenX)
+            Y.text('Y='+event.screenY)
+
+
+        })
+
+</script>
+</body>
+</html>

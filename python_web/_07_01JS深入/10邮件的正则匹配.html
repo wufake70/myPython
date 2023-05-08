@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件正则匹配</title>
+    <style>
+        input{
+            display: block;
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="请输入您的邮箱地址" autocomplete="on">
+
+<script src="./jQuery/jQuery.js"></script>
+<script>
+    /*邮件格式: 用户名@****.com */
+
+
+    var  mailbox = $('input')
+    mailbox.change(function () {   /**/
+        var idx = $(this).val().search(/@/g)
+
+        if (idx != -1) {   /*判断是否含有 @*/
+            var str1 = $(this).val().slice(0,idx),
+                str2 = this.value.slice(idx+1,),
+                idx2 = str1.search(/[^a-z A-Z \d _]/g)  /*匹配用户名的非法字符*/
+
+            /*alert(str1)
+            alert(str2)*/
+            if (idx2===-1) {
+                //谷歌邮箱
+                if (str2=='gmail.com') {
+                    alert('ok')
+                }else if (str2=='qq.com') {  //QQ邮箱
+                    alert('ok')
+
+                }else {
+                    alert('格式错误')
+                }
+
+            }else{
+                alert('格式错误！！')
+            }
+        } else {
+            alert('格式错误！！')
+        }
+
+    })
+</script>
+</body>
+</html>

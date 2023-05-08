@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层叠样式表 引入方式</title>
+    <link rel="stylesheet" href="./css/001_css第三中引入.css">
+    <style>
+        p{  /*标签选择器 */
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<!--方式一 行内样式-->
+<p style="color:red;">我是段落标签</p>
+
+<!--方式二   内部样式
+    head 头部添加style 标签,
+    使用 标签选择器-->
+<p>我是段落标签</p>
+
+<!--方式三  外部样式
+    创建一个 css文件，(最好 新建一个文件夹 同一存放css文件。
+    在 head标签中添加 link标签，href属性 填入css的路径
+-->
+<span >我是文本标签</span>
+
+<!--
+注意：
+    1.第一种不推荐使用，最好用于测试
+    2.推荐使用第三种
+    3.优先级: 行内>内部=外部（就近原则）
+-->
+
+</body>
+</html>

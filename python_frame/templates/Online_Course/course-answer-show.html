@@ -1,0 +1,100 @@
+{% extends 'Online_Course/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+            <title>全答案展示</title>
+    {% endblock %}
+
+    {% block style %}
+        <style>
+            .clearfix::before,
+            .clearfix::after{
+                content: '';
+                clear: both;
+                display: table;
+            }
+            .answer-show{
+                width: 75%;
+                height: auto;
+                background: rgb(255,255,255);
+                border-radius: 5px;
+                border: 2px solid rgba(255,255,255, 1);
+                margin: auto;
+                position: relative;
+                top: 60px;
+                border: 1px solid black;
+                padding: 5px;
+
+
+            }
+
+            .answer-show ul {
+
+                margin: 0px 120px;
+
+            }
+            .answer-show li{
+                border-bottom: 1px solid black;
+                padding: 10px 0px;
+            }
+
+            .title{
+                font-size: 19px;
+                line-height: 25px;
+                color: black;
+                font-weight: bold;
+                margin: 4px 0px 10px 0px;
+                text-decoration: none;
+            }
+            .content{
+                display: block;
+                font-size: 17px;
+                color: #999aaa;
+                margin-bottom: 10px;
+            }
+            .answer{
+                color: #df5000;
+                font-size: 14px;
+
+            }
+
+            .course-name{
+                text-align: center;
+                font-size: 25px;
+                font-weight: bold;
+                margin: 0px auto;
+            }
+
+        </style>
+
+    {% endblock %}
+</head>
+<body>
+
+
+{#身体#}
+{% block content %}
+    <div class="course-name"><span>{{ name }}</span></div>
+    <div class="answer-show">
+    <span style="color: pink; font-size: 20px; margin: 4px 5px">答案展示区 </span>
+    <ul>
+        {% for i in  result %}
+            <li>
+                <a class="title" target="_blank" href="{% url 'Edit' i.id %}">{{ i.title }}</a>
+                <span class="content">{{ i.content }}</span>
+                <span class="answer">答案: {{ i.answer }} </span>
+            </li>
+
+
+        {% endfor %}
+
+    </ul>
+    </div>
+
+{% endblock%}
+
+</body>
+</html>

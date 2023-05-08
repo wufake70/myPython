@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>less</title>
+    <style>
+        /*less是一门css的预处理语言*/
+        /*less是一个css的增强版，通过less可以编写更少的代码实现更强大的功能*/
+        /*less的作用是 将less的代码 编译成css 代码*/
+
+
+        /*原生css的变量,格式必须是 '--' 开头*/
+        /*缺点 兼容性不好*/
+        html{
+            --color: red;
+            /*calc() 计算函数，兼容性不好*/
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: var(--color);
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

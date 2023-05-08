@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+    /*1.(隐式)原型链
+    *   访问一个对象的属性时
+    *   现在自身属性中查找，找到返回
+    *   如果没有，在沿着__proto__(隐式原型)属性 这条链向上 查找，找到返回
+    *   如果都没有找到(Object.prototype.__proto__:null，Object原型对象就是原型链的尽头)，返回undefined
+    *
+    * ***实例化对象的 隐式原型属性 等于 构造函数 的 显示原型属性***
+    *
+    *2.所有函数对象都有显示原型属性、隐式原型属性
+    *3.所有创建的函数都 通过Function 构造函数 实例化 出来的(也就是说所有函数都是 Function 构造函数的 实例化对象，
+    *  这些函数的__proto__隐式原型属性 都指向同一个 原型对象)
+    *  var fun = new Function()
+    *  var fun1 = new Function()
+    *  var fun2 = new Function()
+    *  var Function = new Function()
+    *  var Object = new Function()   (Object对象也 由 构造函数Function 实例化出来的
+    * 所有函数的隐式原型__proto__属性 都相等( Function.prototype)
+    *
+    *4.构造函数 Function 的__proto__属性 也指向 它的prototype 指向的 显示原型对象
+    * 即 Function.__proto__ === Function.prototype
+    * 原因: var Function = new Function()
+    *
+    * 5.所有函数的 隐式原型__proto__属性 都相等。
+    *
+    * 6.深度总结:
+    *   只有由构造函数Function 实例出来的对象(即函数，注意Object Function也是其 实例出来的对象)
+    *   的__proto__隐式原型属性才相同，其他构造函数实例的对象的 __proto__是不相同的。
+    *
+    * 7.所有对象都有 隐式原型属性(因为对象都是 由 其对应的构造函数 实例化出来的)
+    *  */
+
+
+    function Fun() {
+        //给构造函数 添加 test 方法
+        this.test = function () {
+            console.log('test()')
+        }
+    }
+
+    //给其原型对象 添加test2 方法
+    Fun.prototype.test2 = function () {
+        console.log('test2()')
+    }
+    var fn = new Fun()
+    fn.test()
+    fn.test2()
+
+    /*alert(Function.__proto__ === Function.prototype)*/  //返回true
+    alert(Object.__proto__ === Function.prototype)  //返回true
+
+</script>
+</body>
+</html>

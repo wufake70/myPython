@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IIFE</title>
+</head>
+<body>
+<script>
+    /*
+    * IIFE 全称 Immediately-Invoked Function Expression，立即调用函数表达式
+    * 即 匿名函数自调用，立即执行函数
+    *
+    * 作用:
+    * 隐藏实现
+    * 不会外然污染 全局命名空间
+    * 用它来编写js 模块
+    *
+    *
+    * */
+
+    +function () {
+        /*alert('我是立即执行函数')*/
+        var a = 1
+        function f1() {
+            alert(a+1)
+        }
+
+        // 给window 对象创建一个方法
+        window.$ = function () {
+            return {//向外部暴露 f1函数
+                f1: f1
+            }
+        }
+    }()
+    // 我们无法直接调用 f1函数 (他是在匿名函数 局部作用域中创建的)
+    // 但是我们可以通过 调用 $ 函数 来调用 f1，如:$().f1()
+</script>
+</body>
+</html>

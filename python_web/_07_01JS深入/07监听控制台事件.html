@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    (function noDebuger() {
+    function testDebuger() {
+        var wWADWeTEd1 = new window["Date"]();
+        debugger;
+        if (new window["Date"]() - wWADWeTEd1 > 10) {
+            window["document"]['body']['innerHTML'] = '<div>私有接口，请勿调用</div>';
+            return true
+        }
+        return false
+    }
+
+    function start() {
+        while (testDebuger()) {
+            testDebuger()
+        }
+    }
+    if (!testDebuger()) {
+        window['onblur'] = function() {
+            setTimeout(function() {
+                alert(999)
+                start()
+                alert(9)
+            }, 5)
+        }
+    } else {
+        start()
+    }
+})();
+</script>
+</body>
+</html>

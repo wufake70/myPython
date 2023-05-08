@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+    </head>
+    <body>
+    	<input id="input" type="text" /> <br>
+        <span id="span" style="border:2px solid red"></span>
+
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+        <script type="text/javascript">
+            /*change事件: 当form元素的内容、选择的内容或选中的状态发生改变时，发生此事件*/
+            //原生js
+            /*let ipt = document.querySelector('#input'),
+                spn = document.querySelector('#span')
+
+            ipt.onchange = function () {
+                alert('9999')
+                spn.textContent = ipt.value
+            }*/
+
+            // jq
+            let ipt = $('#input'),
+                spn = $('#span')
+
+            ipt.change(function () {
+                spn.text(ipt.val())
+            })
+            //oninput 事件和 onchange事件 效果一样，区别于onchange 输完内容 要回车 才会触发事件，oninput 不会
+            setTimeout(function () {
+
+                let ipt = document.querySelector('#input'),
+                spn = document.querySelector('#span')
+                    ipt.onchange = function () {
+                        /*ipt.value = 999999
+                    spn.innerText = 9900444 */
+                        spn.innerText = ipt.value
+                }
+                ~(function () {document.querySelector('#input').value = 'nowcoder';
+                        document.querySelector('#input').onchange();
+           return document.querySelector('#span').innerText === 'nowcoder'})()
+
+
+            },110)
+
+        </script>
+    </body>
+</html>

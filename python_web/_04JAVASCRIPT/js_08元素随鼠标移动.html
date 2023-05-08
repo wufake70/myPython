@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随鼠标移动</title>
+  <style>
+    div{
+      width: 50px;
+      height: 50px;
+      background-color: yellowgreen;
+      position: absolute;
+       /* position: fixed;*/
+      opacity: 0.5;
+    }
+
+    p{
+        height: 10000px;
+    }
+  </style>
+
+</head>
+<body>
+<div class="box"></div>
+<p></p>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    var root = $('html'),
+        div = $('div')
+
+    /*给根元素 绑定鼠标移动事件*/
+    root.mousemove(function (event) {
+        /*alert(999)*/
+
+        /*clientX,Y参照对象 可视窗口，左上角处为原点*/
+        /*当文档的高度 大于可视窗口，clientY将无法增加，即div元素 无法跟随鼠标*/
+        /*法一，div元素设置 固定定位*/
+        /*法二,使用 pageX pageY*/
+        /*var X = event.clientX,
+            Y = event.clientY*/
+
+        var X = event.pageX,
+            Y = event.pageY
+
+        /*修改div位置*/
+        div.css({
+            'left': X-25,  /*使指针 放置在div的中心部位*/
+            'top': Y-25
+        })
+
+    })
+
+</script>
+</body>
+</html>

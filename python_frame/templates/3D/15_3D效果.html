@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正立方体</title>
+{#    <link rel="stylesheet" href="./RESET_CSS/reset.css">#}
+    <link rel="stylesheet" href="{% static "admin/css/3D/RESET_CSS/reset.css" %}">
+    <style>
+
+
+        .cube{
+            /*perspective: 800px;*/   /*必须是父元素开启透视，才能看到立体的效果*/
+            width: 200px;
+            height: 200px;
+            /*background-color: red;*/
+            margin: 100px auto;
+
+
+            transform-style: preserve-3d;  /*必须设置3D透视效果*/
+            animation: turn 20s linear infinite;  /*为了更好的体验 ，这里可以不开透视 */
+        }
+        .cube>div{
+            width: 200px;
+            height: 200px;
+            opacity: 0.8;
+            position: absolute;
+        }
+        img{
+            vertical-align: top; /*与顶端对齐*/
+        }
+
+
+        /*正方形的右边*/
+        .box1{  /*图片绕y轴旋转90度， 再往前(正方形的右边)走一百像素*/
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        /*正方形的左边*/
+        .box2{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        /*上边*/
+        .box3{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        /*下边*/
+        .box4{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        /*正后面*/
+        .box5{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        /*正前面*/
+        .box6{
+            transform: rotateY(0deg) translateZ(100px);
+        }
+
+        @keyframes turn {
+            from{   /*先绕y轴 转*/
+                transform: rotateY(0);
+            }
+            50%{
+                transform: rotateY(1turn);
+            }
+            50.00001%{   /*在绕 x轴转，注意: 这里的关键帧 占比特别小，是为了能快速返回初始状态，并能够执行下面的动画*/
+                transform: rotateX(0);
+            }
+            to{
+                transform: rotateX(1turn);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="cube">
+{#    <div class="box1"><img src="./picture/复仇者联盟/1.jpg" alt=""></div>#}
+    <div class="box1"><img src="{% static "admin/img/3D/picture/复仇者联盟/1.jpg" %}" alt=""></div>
+    <div class="box2"><img src="{% static "admin/img/3D/picture/复仇者联盟/2.jpg" %}" alt=""></div>
+    <div class="box3"><img src="{% static "admin/img/3D/picture/复仇者联盟/3.jpg" %}" alt=""></div>
+    <div class="box4"><img src="{% static "admin/img/3D/picture/复仇者联盟/4.jpg" %}" alt=""></div>
+    <div class="box5"><img src="{% static "admin/img/3D/picture/复仇者联盟/5.jpg" %}" alt=""></div>
+    <div class="box6"><img src="{% static "admin/img/3D/picture/复仇者联盟/6.jpg" %}" alt=""></div>
+{#    <div class="box2"><img src="./picture/复仇者联盟/2.jpg" alt=""></div>#}
+{#    <div class="box3"><img src="./picture/复仇者联盟/3.jpg" alt=""></div>#}
+{#    <div class="box4"><img src="./picture/复仇者联盟/4.jpg" alt=""></div>#}
+{#    <div class="box5"><img src="./picture/复仇者联盟/5.jpg" alt=""></div>#}
+{#    <div class="box6"><img src="./picture/复仇者联盟/6.jpg" alt=""></div>#}
+</div>
+</body>
+</html>

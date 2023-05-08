@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景</title>
+    <style>
+        .box1{
+            width: 900px;
+            height: 80px;
+            margin: 100px auto;
+
+            /*背景颜色*/
+            background-color: yellowgreen;
+
+            /*引入背景图片*/
+            background-image: url("./picture/001.jpg");
+            /*如果背景图片小于元素，则背景图片会自动在元素中平铺，将元素铺满*/
+            /*如果背景图片大于元素，将会图片一部分将会无法显示*/
+            /*如果背景图片等于元素，则会正常显示*/
+
+            /*背景图片的重复方式，默认值repeat*/
+            background-repeat: no-repeat;
+
+            /*背景图片的位置*/
+            /*方位词，top right bottom left，可以结合使用*/
+            /*偏移量，水平偏移量，垂直偏移量*/
+            /*background-position: bottom center;*/  /*中下位置*/
+            /*background-position: 500px 10px;*/  /*偏移量*/
+
+            /*背景图片的大小*/
+            /*设置数值，第一个表示width、第二个表示 高度，只写一个，第二个默认auto*/
+            /*cover 表示 图片比例不变，将元素铺满，
+            如果设置的宽高比例不合适，将无法显示完整图片*/
+            
+            /*contain 表示 图片比例不变，将图片放在元素中 完整显示，
+            如果设置的比例不合适，将无法覆盖元素*/
+            /*background-size: 100px 100px;*/
+            /*background-size: cover;*/
+            /*background-size: contain;*/
+
+<!--            设置背景图片 不动-->
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+</body>
+</html>

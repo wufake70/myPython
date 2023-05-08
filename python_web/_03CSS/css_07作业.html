@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <link rel="stylesheet" href="./RESET_CSS/reset.css">
+    <style>
+        .d1{    /*设置橱窗大小及位置*/
+            width: 590px;
+            height: 470px;
+            position: relative;
+            left: 320px;
+            top: 100px;
+        }
+
+        .u1>li{
+            display: list-item;
+            list-style: none;
+            position: absolute;     /*脱离文档流 图片重叠*/
+
+            cursor: pointer;
+        }
+
+        /*设置 切换图片按钮样式*/
+        .d1>button{
+            width: 25px;
+            height: 25px;
+            border: 1px solid grey;
+            background-color: grey;
+
+            /*设置不可透明度*/
+            opacity: 50%;
+
+            /*该值为边框的一半(50%)时就为圆形*/
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 4;   /* 设置 层级优先级*/
+        }
+
+        .b_right{
+            position: absolute;
+            left: -1px;
+            top:50%
+
+        }
+        .b_left{
+            position: absolute;
+            left: 565px;
+            top:50%
+
+        }
+
+        /*设置小圆点样式*/
+        .d2>div{
+
+            width: 8px;
+            height: 8px;
+            border: 1px solid grey;
+            background-color: grey;
+            border-radius: 50%;
+            opacity: 80%;
+            cursor: pointer;
+        }
+
+        .dot1{
+             position: absolute;
+            left: 256px;
+            top:420px;
+            z-index: 4;
+        }
+        .dot2{
+             position: absolute;
+            left: 276px;
+            top:420px;
+            z-index: 4;
+        }
+        .dot3{
+             position: absolute;
+            left: 296px;
+            top:420px;
+            z-index: 4;
+        }
+
+        /* 鼠标划入高亮*/
+         .d1>button:hover{
+
+            background-color: white;
+        }
+         .d2>div:hover{
+
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+<div class="d1">
+    <!--图片切换按钮-->
+    <button class="b_left">
+        <i> &gt; </i>
+    </button>
+    <button class="b_right">
+        <i> &lt; </i>
+    </button>
+
+    <!--小圆点-->
+    <div class="d2">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+        <div class="dot3"></div>
+
+    </div>
+
+
+    <!--商品列表-->
+    <ul class="u1">
+
+        <!--列表标签是块级元素-->
+        <li class="l1" style="z-index: 3">
+            <a href="">
+                <img src="./picture/001.jpg" alt="商品">
+            </a>
+
+        </li>
+        <li class="l2" style="z-index: 2">
+            <a href="">
+                <img src="./picture/002.jpg" alt="商品">
+            </a>
+
+        </li>
+        <li class="l3" style="z-index: 1">
+            <a href="">
+                <img src="./picture/003.jpg" alt="商品">
+            </a>
+
+        </li>
+    </ul>
+
+
+</div>
+<div>
+    <p style="height: 2000px"></p>
+</div>
+
+</body>
+</html>

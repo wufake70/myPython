@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格的样式</title>
+    <style>
+<!--    th=thead tb=tbody tf=tfoot ，td 单元格-->
+        table{
+            width: 50%;
+            border: 1px solid black;
+            margin: auto;
+
+            /*指定边框与边框之间的距离*/
+            /*border-spacing: 0px;*/
+
+            /*合并边框*/
+            border-collapse: collapse;
+        }
+
+        td{/*td标签默认 内容垂直居中*/
+            border: 1px solid black;
+            text-align: center;
+
+        }
+
+        /*通过设置伪类 使奇数行变色*/
+        tr:nth-child(odd){
+            background-color: yellowgreen;
+        }
+
+    </style>
+</head>
+<body>
+  <table>
+      <tr>
+          <td>学号</td>
+          <td>姓名</td>
+          <td>性别</td>
+          <td>年龄</td>
+          <td>地址</td>
+      </tr>
+
+      <tr>
+          <td>1</td>
+          <td>孙悟空</td>
+          <td>男</td>
+          <td>29</td>
+          <td>花果山</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>猪八戒</td>
+          <td>男</td>
+          <td>29</td>
+          <td>高老庄</td>
+      </tr>
+        <tr>
+          <td>3</td>
+          <td>沙和尚</td>
+          <td>男</td>
+          <td>29</td>
+          <td>流沙河</td>
+      </tr>
+        <tr>
+          <td>学号</td>
+          <td>姓名</td>
+          <td>性别</td>
+          <td>年龄</td>
+          <td>地址</td>
+      </tr>
+
+      <tr>
+          <td>1</td>
+          <td>孙悟空</td>
+          <td>男</td>
+          <td>29</td>
+          <td>花果山</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>猪八戒</td>
+          <td>男</td>
+          <td>29</td>
+          <td>高老庄</td>
+      </tr>
+        <tr>
+          <td>3</td>
+          <td>沙和尚</td>
+          <td>男</td>
+          <td>29</td>
+          <td>流沙河</td>
+      </tr>
+
+
+  </table>
+</body>
+</html>

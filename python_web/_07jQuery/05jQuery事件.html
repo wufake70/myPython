@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件</title>
+</head>
+<body>
+<p class="p1">我是p标签1</p>
+<p class="p2">我是p标签2</p>
+<p class="p3">我是p标签3</p>
+<p class="p4">我是p标签4</p>
+<p>我是p标签5</p>
+<button>移除事件</button>
+<script src="./jQuery/jQuery.js"></script>
+<script>
+    // 单击事件
+    /*$("p").click(function () {
+        $("p").text('999999999999999')
+
+    })*/
+    //双击事件
+    /*$("p").dblclick(function () {
+        $("p").text('999999999999999')
+
+    })*/
+
+    //划入划出事件，  (单独的设置划入、滑出事件 mouseenter,mouseout
+    $("p").hover(function () {
+        $("p").text('999999999999999') //划入函数
+
+    },
+        function () {                   //滑出函数
+        $("p").text('我是p标签1')
+        }
+    )
+
+    //绑定事件, $("").on("事件",function () {})
+    $("p").on("click", function (){
+        alert($(this).text())
+    })
+
+    //移除事件 $("").off("事件")
+    $("button").on('click', function () {
+        $("p").off("click")  //移除p标签的单击事件
+    })
+    alert()
+    //$('button').click()  自己调用单击事件
+
+</script>
+</body>
+</html>
